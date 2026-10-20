@@ -129,9 +129,8 @@ Tersedia **32 soal**: empat soal per planet. Setiap misi memilih dua soal per pl
 
 Sumber resmi, diperiksa pada 20 Oktober 2026:
 
-- [UU No. 43 Tahun 2009 tentang Kearsipan — JDIH BPK](https://peraturan.bpk.go.id/Details/38788/uu-no-43-tahun-2009)
-- [Naskah UU No. 43 Tahun 2009 — PDF JDIH BPK](https://peraturan.bpk.go.id/Download/28117/UU%20Nomor%2043%20Tahun%202009.pdf)
-- [Rujukan UU No. 43 Tahun 2009 — JDIH Kementerian Keuangan](https://jdih.kemenkeu.go.id/dok/uu-43-tahun-2009)
+- [UU No. 43 Tahun 2009 tentang Kearsipan — JDIH ANRI](https://jdih.anri.go.id/peraturan/undang-undang-no-43-tahun-2009)
+- [Naskah UU No. 43 Tahun 2009 — PDF JDIH ANRI](https://jdih.anri.go.id/storage/rules/January2024/F2YRiGn9owRllGoS7EHZ.pdf)
 - [Pengaturan build dan situs statis — dokumentasi Vercel](https://vercel.com/docs/builds/configure-a-build)
 
 Desain ini tidak menyatakan afiliasi resmi dengan ANRI. Planet dan jaraknya digambarkan secara artistik, bukan sebagai simulasi astronomi berskala.
