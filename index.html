@@ -179,7 +179,7 @@ const BANK = [
   function classCode(){return ($('class-code').value||'').trim().toUpperCase().replace(/\s+/g,'-').slice(0,30);}
   function payload(done){
     return {id:session.uid,nama:session.name,kelas:session.kelas||'',mode:session.mode,status:done?'selesai':'bermain',planet:session.stage,skor:session.score,benar_pertama:session.firstCorrect,dijawab:session.answered,salah:session.wrong,kapsul:session.collected,waktu_aktif:Math.round(session.elapsed),
-      riwayat:session.history.map((r,i)=>{const q=BANK[r.stage][r.id];return {no:i+1,planet:PLANETS[r.stage].name,topik:PLANETS[r.stage].topic,kode:`${r.stage+1}.${r.id+1}`,soal:q.q,jawaban:q.a[0],percobaan:r.attempts,salah:Array.isArray(r.wrong)?r.wrong:[],rujukan:q.ref};})};
+      riwayat:session.history.map((r,i)=>{const q=BANK[r.stage][r.id];return {no:i+1,sid:q.sid||null,planet:PLANETS[r.stage].name,topik:PLANETS[r.stage].topic,kode:`${r.stage+1}.${q.urut||r.id+1}`,soal:q.q,jawaban:q.a[0],percobaan:r.attempts,salah:Array.isArray(r.wrong)?r.wrong:[],rujukan:q.ref};})};
   }
   async function post(body){
     const res=await fetch(SUPABASE_URL+'/rest/v1/rpc/maa_kirim_hasil',{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY},body:JSON.stringify({p:body}),keepalive:body.status!=='selesai'});
@@ -203,8 +203,33 @@ const BANK = [
   try{const u=new URLSearchParams(location.search).get('kelas');const idn=JSON.parse(localStorage.getItem('orbit-arsip-identity')||'null');
     if(idn){$('pilot-name').value=idn.name||'';$('class-code').value=idn.kelas||'';}
     if(u)$('class-code').value=u.trim().toUpperCase().slice(0,30);}catch{}
+  setTimeout(loadRemoteBank,0);
+  // ===== Bank soal dinamis (dikelola dari /pengajar, disimpan di Supabase) =====
+  const CURRENT_BANK=BANK,BUILTIN=BANK.map(g=>g.slice()),BANK_CACHE='orbit-arsip-bank-v1';
+  let remoteBank=null;
+  function validQ(x){return x&&typeof x.q==='string'&&Array.isArray(x.a)&&x.a.length===4&&x.a.every(t=>typeof t==='string'&&t)&&typeof x.why==='string'&&typeof x.hint==='string'&&typeof x.ref==='string';}
+  function validBank(b){return Array.isArray(b)&&b.length===8&&b.every(g=>Array.isArray(g)&&g.length>=QUESTIONS_PER_PLANET&&g.every(validQ));}
+  function setBank(b){if(!validBank(b))return;BANK.length=0;b.forEach(g=>BANK.push(g.map(x=>({...x,a:[...x.a]}))));}
+  function rowsToBank(rows){
+    const b=PLANETS.map(()=>[]);
+    for(const r of rows||[]){if(r.planet>=0&&r.planet<8&&Array.isArray(r.pengecoh)&&r.pengecoh.length===3)b[r.planet].push({q:r.soal,a:[r.jawaban_benar,...r.pengecoh],why:r.pembahasan||'',hint:r.petunjuk||'Baca kembali pertanyaannya dengan teliti.',ref:r.rujukan||'',sid:r.id,urut:r.urutan});}
+    return b.map((g,i)=>g.length>=QUESTIONS_PER_PLANET?g:BUILTIN[i]);
+  }
+  async function loadRemoteBank(){
+    try{const c=JSON.parse(localStorage.getItem(BANK_CACHE)||'null');if(validBank(c)){remoteBank=c;if(phase==='menu')setBank(c);}}catch{}
+    try{
+      const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),8000);
+      const res=await fetch(SUPABASE_URL+'/rest/v1/rpc/maa_ambil_soal',{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY},body:'{}',signal:ctl.signal});
+      clearTimeout(t);if(!res.ok)return;
+      const rows=await res.json();if(!Array.isArray(rows)||!rows.length)return;
+      const b=rowsToBank(rows);if(!validBank(b))return;
+      remoteBank=b;try{localStorage.setItem(BANK_CACHE,JSON.stringify(b));}catch{}
+      if(phase==='menu')setBank(b);
+    }catch{}
+  }
   function savedSession(){
     const s=storage.get(STORE);
+    const BANK=s&&validBank(s.bank)?s.bank:CURRENT_BANK;
     if(!s||s.version!==1||!Number.isInteger(s.stage)||s.stage<0||s.stage>=8||!['explore','relaxed'].includes(s.mode)||typeof s.name!=='string')return null;
     if(!['score','collected','firstCorrect','wrong','elapsed','shield','answered'].every(k=>Number.isFinite(s[k])&&s[k]>=0))return null;
     if(s.shield<1||s.shield>3||s.answered!==s.stage*QUESTIONS_PER_PLANET||s.firstCorrect>s.answered)return null;
@@ -257,12 +282,13 @@ const BANK = [
   }
   function start(resume=false){
     closeDialogs();
-    if(resume){session=savedSession();if(!session){menu();toast('Simpanan tidak tersedia. Mulai misi baru.');return;}session.uid ||= newId();if(typeof session.kelas!=='string')session.kelas=classCode();}
+    if(resume){session=savedSession();if(!session){menu();toast('Simpanan tidak tersedia. Mulai misi baru.');return;}if(validBank(session.bank))setBank(session.bank);else session.bank=BANK.map(g=>g.slice());session.uid ||= newId();if(typeof session.kelas!=='string')session.kelas=classCode();}
     else{
     const nm=$('pilot-name').value.trim().slice(0,40);
     if(!nm){toast('Tulis nama lengkapmu dulu agar hasilnya tercatat oleh pengajar.');$('pilot-name').focus();return;}
     try{localStorage.setItem('orbit-arsip-identity',JSON.stringify({name:nm,kelas:classCode()}));}catch{}
-    session={version:1,uid:newId(),kelas:classCode(),name:nm,mode:document.querySelector('input[name="mode"]:checked').value,stage:0,score:0,shield:3,collected:0,firstCorrect:0,answered:0,wrong:0,elapsed:0,history:[],plan:BANK.map(group=>shuffle(group.map((_,i)=>i)).slice(0,QUESTIONS_PER_PLANET))};}
+    setBank(remoteBank||BUILTIN);
+    session={version:1,uid:newId(),kelas:classCode(),name:nm,bank:BANK.map(g=>g.slice()),mode:document.querySelector('input[name="mode"]:checked').value,stage:0,score:0,shield:3,collected:0,firstCorrect:0,answered:0,wrong:0,elapsed:0,history:[],plan:BANK.map(group=>shuffle(group.map((_,i)=>i)).slice(0,QUESTIONS_PER_PLANET))};}
     persist();sync();beginFlight();soundTone(420,.2);toast(`Selamat terbang, ${session.name}! Dekati kapsul hijau untuk mengumpulkannya.`);
   }
   function beginFlight(retry=false){
@@ -338,7 +364,7 @@ const BANK = [
   function pause(){if(phase!=='flying')return;phase='paused';showDialog('pause-dialog');}
   function unpause(){if(phase!=='paused')return;$('pause-dialog').close();phase='flying';last=performance.now();canvas.focus({preventScroll:true});}
   const HELP=`<div class="instruction-row"><span class="instruction-number">01</span><div><h3>Kemudikan ARKA–01</h3><p>Pesawat melaju otomatis. Gunakan tombol panah atau WASD untuk menghindari asteroid dan mengambil kapsul hijau (+10 poin). Di layar sentuh, geser pada area antariksa atau gunakan tombol arah.</p></div></div><div class="instruction-row"><span class="instruction-number">02</span><div><h3>Temukan cincin checkpoint</h3><p>Setelah perjalanan mencapai 100%, cincin bercahaya muncul di sisi kanan. Terbanglah mendekatinya. Masuk langsung ke cincin, atau gunakan tombol “Masuk checkpoint” / Enter saat sudah dekat. Cincin menunggu sampai kamu masuk.</p></div></div><div class="instruction-row"><span class="instruction-number">03</span><div><h3>Buka gerbang dengan pengetahuan</h3><p>Jawab 2 soal dengan benar untuk melanjutkan. Jawaban salah mendapat petunjuk dan bisa dicoba lagi. Poin jawaban: 100 pada percobaan pertama, lalu 70, 40, atau 25. Checkpoint selesai memberi +50 poin dan memulihkan 1 perisai.</p></div></div><div class="instruction-row"><span class="instruction-number">04</span><div><h3>Tuntaskan 8 planet</h3><p>Mode Jelajah memiliki 3 perisai. Jika habis, ulangi penerbangan planet yang sama; poin kapsul pada percobaan yang gagal diulang. Mode Santai tanpa kerusakan. Rekor kedua mode disimpan terpisah.</p></div></div><div class="info-controls"><span><kbd>P</kbd> / <kbd>Esc</kbd> Jeda</span><span><kbd>M</kbd> Suara</span><span><kbd>1–4</kbd> Jawaban</span></div><p class="info-note">Progres disimpan setelah setiap checkpoint selesai, pada browser dan perangkat ini. Menutup atau memuat ulang tab akan kembali ke awal penerbangan setelah checkpoint terakhir. Saat tab tidak aktif, penerbangan dijeda. Tidak ada batas waktu menjawab.</p>`;
-  const SOURCES=`<p>Bank berisi 32 soal; setiap misi memilih 2 dari 4 soal di masing-masing planet, dengan pilihan jawaban yang diacak. Materi disusun dari <b>Undang-Undang Nomor 43 Tahun 2009 tentang Kearsipan</b>.</p><a class="source-link" href="${SOURCE}" target="_blank" rel="noopener noreferrer">UU No. 43 Tahun 2009 — JDIH BPK ↗<small>Naskah resmi, metadata, dan status peraturan</small></a><a class="source-link" href="https://jdih.kemenkeu.go.id/dok/uu-43-tahun-2009" target="_blank" rel="noopener noreferrer">Salinan rujukan — JDIH Kementerian Keuangan ↗<small>Undang-Undang tentang Kearsipan</small></a><p>Topik: pengertian dan jenis arsip (Pasal 1, 9); pengelolaan dinamis (Pasal 40–45); retensi dan penyusutan (Pasal 48–51); arsip terjaga (Pasal 43); arsip vital (Pasal 56); arsip statis (Pasal 59, 63–64); arsip sebagai alat bukti (Pasal 3).</p><p class="info-note">Rujukan pasal tersedia dalam setiap pembahasan. Soal dan ilustrasi adalah media belajar, bukan pernyataan afiliasi resmi dengan ANRI. Tata surya digambarkan secara artistik, bukan simulasi skala astronomi. Rujukan diperiksa 20 Oktober 2026.</p><p style="font-size:11px">Game berjalan di browser tanpa akun. Nama, progres, dan rekor disimpan lokal; tidak dikirim ke server oleh game. Tautan referensi memerlukan internet.</p>`;
+  const SOURCES=`<p>Setiap misi memilih 2 soal secara acak dari bank soal di masing-masing planet, dengan pilihan jawaban yang diacak. Materi disusun dari <b>Undang-Undang Nomor 43 Tahun 2009 tentang Kearsipan</b>.</p><a class="source-link" href="${SOURCE}" target="_blank" rel="noopener noreferrer">UU No. 43 Tahun 2009 — JDIH BPK ↗<small>Naskah resmi, metadata, dan status peraturan</small></a><a class="source-link" href="https://jdih.kemenkeu.go.id/dok/uu-43-tahun-2009" target="_blank" rel="noopener noreferrer">Salinan rujukan — JDIH Kementerian Keuangan ↗<small>Undang-Undang tentang Kearsipan</small></a><p>Topik: pengertian dan jenis arsip (Pasal 1, 9); pengelolaan dinamis (Pasal 40–45); retensi dan penyusutan (Pasal 48–51); arsip terjaga (Pasal 43); arsip vital (Pasal 56); arsip statis (Pasal 59, 63–64); arsip sebagai alat bukti (Pasal 3).</p><p class="info-note">Rujukan pasal tersedia dalam setiap pembahasan. Soal dan ilustrasi adalah media belajar, bukan pernyataan afiliasi resmi dengan ANRI. Tata surya digambarkan secara artistik, bukan simulasi skala astronomi. Rujukan diperiksa 20 Oktober 2026.</p><p style="font-size:11px">Game berjalan di browser tanpa akun. Nama, progres, dan rekor disimpan lokal; tidak dikirim ke server oleh game. Tautan referensi memerlukan internet.</p>`;
   function openInfo(kind){
     if(document.querySelector('dialog[open]'))return;
     infoPrior=phase;if(phase==='flying')phase='info';

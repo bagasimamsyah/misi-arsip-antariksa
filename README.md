@@ -17,6 +17,7 @@ Game penerbangan 2D untuk pembelajaran kearsipan. Pemain menerbangkan ARKA–01 
 - Panel pengajar (`/pengajar`) menampilkan: ringkasan kelas, peringkat peserta, progres 8 planet, detail jawaban tiap peserta (termasuk pilihan salah), **analisis soal** (soal tersulit dan jawaban salah terbanyak), unduh **CSV untuk Excel**, hapus data uji coba, dan ganti PIN. Data diperbarui otomatis tiap 15 detik.
 - Keamanan: tabel tidak bisa dibaca langsung dari browser. Peserta hanya dapat mengirim hasil melalui fungsi `maa_kirim_hasil`; membaca/menghapus data memerlukan PIN pengajar (disimpan sebagai hash bcrypt).
 - Struktur database ada di `supabase/setup.sql` (tabel berawalan `maa_`). Untuk proyek Supabase baru: jalankan file itu di SQL Editor (ganti `GANTI_PIN_INI`), lalu ganti `SUPABASE_URL` dan `SUPABASE_KEY` di `index.html` dan `pengajar.html`.
+- **Kelola soal tanpa koding:** di panel pengajar, buka menu **Kelola soal**. Pengajar dapat menambah, mengubah, menonaktifkan, memindahkan planet, atau menghapus soal beserta jawaban benar, 3 pengecoh, pembahasan, petunjuk, dan rujukan pasal. Soal disimpan di tabel `maa_soal` (lihat `supabase/soal.sql`). Game mengambil soal terbaru setiap kali dibuka; jika Supabase tidak terjangkau, game memakai salinan terakhir atau soal bawaan di `index.html`. Setiap planet wajib memiliki minimal 2 soal aktif.
 - Lupa PIN? Jalankan di Supabase SQL Editor:
   `update public.maa_pengaturan set pin_hash = extensions.crypt('PIN_BARU', extensions.gen_salt('bf')) where id = 1;`
 
@@ -139,7 +140,7 @@ Desain ini tidak menyatakan afiliasi resmi dengan ANRI. Planet dan jaraknya diga
 
 Buka `index.html` dengan editor teks, misalnya Visual Studio Code.
 
-- **Soal:** cari `const BANK =`. Tiap soal menggunakan `q` (pertanyaan), `a` (empat jawaban), `why` (pembahasan), `hint` (petunjuk), dan `ref` (rujukan pasal). **Letakkan jawaban benar di indeks pertama `a`.** Game mengacak tampilannya saat dimainkan. Pertahankan delapan kelompok planet dan sedikitnya dua soal per kelompok.
+- **Soal:** sebaiknya lewat menu **Kelola soal** di `/pengajar`. Soal di `const BANK =` hanya cadangan bila database tidak terjangkau. Tiap soal menggunakan `q` (pertanyaan), `a` (empat jawaban), `why` (pembahasan), `hint` (petunjuk), dan `ref` (rujukan pasal). **Letakkan jawaban benar di indeks pertama `a`.** Game mengacak tampilannya saat dimainkan. Pertahankan delapan kelompok planet dan sedikitnya dua soal per kelompok.
 - **Planet:** cari `const PLANETS =` untuk nama, tema, dan warna.
 - **Durasi penerbangan:** cari `const FLIGHT_SECONDS = 22` dan ubah angkanya dalam detik.
 - **Teks beranda:** cari `Jelajahi semesta.` dan `Lindungi ingatan.`.

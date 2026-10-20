@@ -11,7 +11,7 @@
 :root{color-scheme:dark;--bg:#0b1022;--panel:#121a2f;--panel2:#0e1529;--text:#f1f3ef;--muted:#9da7c2;--lime:#d6fc8a;--line:rgba(182,196,232,.14);--accent:#b6a1ff;--danger:#ff9a9f;--amber:#ffd08a;--font:Inter,'Segoe UI',Arial,sans-serif}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;min-height:100vh}
-button,input,select{font:inherit;color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 button:disabled{opacity:.45;cursor:default}
 :focus-visible{outline:2px solid var(--lime);outline-offset:3px}
@@ -109,6 +109,45 @@ dialog h2{margin:12px 0 4px;font-size:24px;letter-spacing:-.5px}
 .qa .ok{color:var(--lime)}
 .qa .no{color:#e5b8be}
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#242740f2;border:1px solid #beade959;border-radius:10px;padding:11px 16px;font-size:12px;z-index:50}
+
+/* view switch */
+.nav{display:flex;gap:4px;background:#0a1020;border:1px solid var(--line);border-radius:11px;padding:4px;margin-left:24px}
+.nav button{background:none;border:none;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;color:var(--muted)}
+.nav button[aria-pressed="true"]{background:#1e2843;color:var(--text)}
+/* soal editor */
+.planets{display:grid;grid-template-columns:repeat(8,1fr);gap:8px;margin-bottom:18px}
+.planet-chip{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.planet-chip:hover{border-color:#ffffff30}
+.planet-chip[aria-pressed="true"]{border-color:var(--lime);background:#d6fc8a0a}
+.planet-chip .pdot{width:22px;height:22px;border-radius:50%;box-shadow:inset -6px -4px 6px #050919b0}
+.planet-chip b{font-size:12px}
+.planet-chip small{font-size:10px;color:var(--muted)}
+.planet-chip small.warn{color:var(--danger)}
+.soal-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.soal-head h2{margin:0 auto 0 0;font-size:19px;letter-spacing:-.3px}
+.soal-head h2 small{display:block;font-size:11px;color:var(--muted);font-weight:400;letter-spacing:0;margin-top:4px}
+.qcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px}
+.qcard.off{opacity:.55}
+.qcard-top{display:flex;gap:10px;align-items:flex-start}
+.qnum{font-size:10px;letter-spacing:1px;color:var(--accent);font-weight:700;white-space:nowrap;padding-top:3px}
+.qcard h3{font-size:14px;line-height:1.55;margin:0;flex:1}
+.qactions{display:flex;gap:6px;flex-shrink:0}
+.qactions .btn{min-height:32px;padding:5px 11px;font-size:11px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:12px 0 10px}
+.opt{font-size:12px;line-height:1.45;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:#0d1426;color:#c9d2e6}
+.opt.right{border-color:#d6fc8a66;background:#d6fc8a0c;color:#e9f9d6}
+.opt b{margin-right:6px}
+.qmeta{font-size:11.5px;color:#aab6cf;line-height:1.6}
+.qmeta b{color:#d4dbea;font-weight:600}
+.switch{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);cursor:pointer}
+form.qform label.lbl{margin-top:14px}
+form.qform textarea.field,form.qform input.field{height:auto;min-height:42px;padding:10px 12px;font-size:13px;line-height:1.5;resize:vertical}
+form.qform .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lbl .hint{letter-spacing:0;color:var(--muted);margin-left:6px;text-transform:none}
+.right-field{border-color:#d6fc8a55!important}
+.notice{font-size:12px;line-height:1.6;color:#c9c1ee;background:#b6a1ff0d;border-left:2px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:18px}
+@media(max-width:1000px){.planets{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:640px){header.top .wrap{flex-wrap:wrap;height:auto;padding-top:10px;padding-bottom:10px;row-gap:10px}.nav{order:3;width:100%}.nav button{flex:1}.planets{grid-template-columns:repeat(2,1fr)}.opts,form.qform .grid2{grid-template-columns:1fr}.nav{margin-left:0}.qcard-top{flex-wrap:wrap}.qactions{width:100%}}
 @media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.kpis .kpi:first-child{grid-column:span 2}.detail-stats{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.wrap{padding:0 16px}.brand small{display:none}.top-actions .label{display:none}.toolbar h1{width:100%}.filters .field{flex:1;min-width:130px}.hide-sm{display:none}}
 </style>
@@ -127,7 +166,8 @@ dialog h2{margin:12px 0 4px;font-size:24px;letter-spacing:-.5px}
 
 <header class="top"><div class="wrap">
  <div class="brand"><span class="brand-icon"><svg><use href="#i-plane"/></svg></span><span>ORBIT<small>PANEL PENGAJAR · MISI ARSIP ANTARIKSA</small></span></div>
- <div class="top-actions" id="top-actions" hidden>
+ <div class="nav" id="nav" hidden><button aria-pressed="true" data-view="hasil">Hasil peserta</button><button aria-pressed="false" data-view="soal">Kelola soal</button></div>
+ <div class="top-actions" id="top-actions" hidden style="margin-left:auto">
   <a class="btn ghost" href="/" target="_blank" rel="noopener"><span class="label">Buka game</span><svg><use href="#i-plane"/></svg></a>
   <button class="btn ghost" id="pin-btn" title="Ganti PIN"><svg><use href="#i-key"/></svg><span class="label">Ganti PIN</span></button>
   <button class="btn ghost" id="logout-btn" title="Keluar"><svg><use href="#i-out"/></svg><span class="label">Keluar</span></button>
@@ -210,6 +250,47 @@ dialog h2{margin:12px 0 4px;font-size:24px;letter-spacing:-.5px}
  </div>
 </div></main>
 
+
+<main id="soal-view" hidden><div class="wrap">
+ <div class="toolbar">
+  <h1>Kelola soal<small class="status-line" id="soal-status">Memuat…</small></h1>
+  <input class="field" id="soal-q" type="search" placeholder="Cari soal…" style="height:38px;font-size:12px;width:220px" aria-label="Cari soal">
+  <button class="btn primary" id="add-soal"><span style="font-size:16px;line-height:0">+</span> Tambah soal</button>
+ </div>
+ <p class="notice">Perubahan langsung dipakai oleh peserta yang <b>memulai misi baru</b> (peserta yang sedang bermain tetap memakai soal lama sampai selesai). Setiap misi memilih <b>2 soal acak</b> per planet, jadi tiap planet wajib punya minimal 2 soal aktif. Urutan pilihan jawaban diacak otomatis di game.</p>
+ <div class="planets" id="planets"></div>
+ <div class="soal-head"><h2 id="soal-title">Merkurius</h2></div>
+ <div id="soal-list"></div>
+</div></main>
+
+<dialog id="qdialog" style="width:min(720px,calc(100% - 28px))">
+ <button class="close" type="button" id="qclose" aria-label="Tutup"><svg><use href="#i-close"/></svg></button>
+ <form class="qform" id="qform">
+  <div class="eyebrow"><span class="dot"></span> <span id="qform-eyebrow">SOAL BARU</span></div>
+  <h2 id="qform-title">Tambah soal</h2>
+  <label class="lbl" for="f-planet">PLANET / TOPIK</label>
+  <select class="field" id="f-planet"></select>
+  <label class="lbl" for="f-soal">PERTANYAAN</label>
+  <textarea class="field" id="f-soal" rows="3" maxlength="1000" required></textarea>
+  <label class="lbl" for="f-benar" style="color:var(--lime)">JAWABAN BENAR ✓</label>
+  <textarea class="field right-field" id="f-benar" rows="2" maxlength="400" required></textarea>
+  <label class="lbl">3 JAWABAN SALAH (PENGECOH) <span class="hint">buat semirip mungkin agar menantang</span></label>
+  <div style="display:grid;gap:8px">
+   <input class="field" id="f-p1" maxlength="400" required placeholder="Jawaban salah 1">
+   <input class="field" id="f-p2" maxlength="400" required placeholder="Jawaban salah 2">
+   <input class="field" id="f-p3" maxlength="400" required placeholder="Jawaban salah 3">
+  </div>
+  <label class="lbl" for="f-why">PEMBAHASAN <span class="hint">tampil setelah peserta menjawab benar</span></label>
+  <textarea class="field" id="f-why" rows="3" maxlength="2000"></textarea>
+  <div class="grid2">
+   <div><label class="lbl" for="f-hint">PETUNJUK <span class="hint">saat jawaban salah</span></label><textarea class="field" id="f-hint" rows="2" maxlength="600"></textarea></div>
+   <div><label class="lbl" for="f-ref">RUJUKAN PASAL</label><input class="field" id="f-ref" maxlength="200" placeholder="mis. Pasal 1 angka 2"><label class="switch" style="margin-top:14px"><input type="checkbox" id="f-aktif" checked> Soal aktif (dipakai di game)</label></div>
+  </div>
+  <div class="err" id="qerr" role="alert"></div>
+  <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px"><button class="btn ghost" type="button" id="qcancel">Batal</button><button class="btn primary" type="submit" id="qsave">Simpan soal</button></div>
+ </form>
+</dialog>
+
 <dialog id="detail"><button class="close" id="detail-close" aria-label="Tutup"><svg><use href="#i-close"/></svg></button><div id="detail-body"></div></dialog>
 
 <dialog id="pin-dialog" style="width:min(420px,calc(100% - 28px))">
@@ -253,8 +334,8 @@ dialog h2{margin:12px 0 4px;font-size:24px;letter-spacing:-.5px}
     catch(err){$('login-err').textContent=err.code==='28P01'?'PIN salah. Coba lagi.':'Tidak dapat terhubung ke database: '+err.message;}
     finally{$('login-btn').disabled=false;$('login-btn').textContent='Masuk';}
   });
-  function enter(){$('login').hidden=true;$('dash').hidden=false;$('top-actions').hidden=false;render();schedule();}
-  function logout(){pin='';data=[];try{sessionStorage.removeItem('maa-pin');}catch{}clearTimeout(timer);$('dash').hidden=true;$('top-actions').hidden=true;$('login').hidden=false;$('pin').value='';$('pin').focus();}
+  function enter(){$('login').hidden=true;$('nav').hidden=false;showView('hasil');$('top-actions').hidden=false;render();schedule();}
+  function logout(){pin='';data=[];try{sessionStorage.removeItem('maa-pin');}catch{}clearTimeout(timer);$('dash').hidden=true;$('soal-view').hidden=true;$('nav').hidden=true;$('top-actions').hidden=true;$('login').hidden=false;soalLoaded=false;$('pin').value='';$('pin').focus();}
   $('logout-btn').onclick=logout;
 
   async function load(manual){
@@ -340,7 +421,7 @@ dialog h2{margin:12px 0 4px;font-size:24px;letter-spacing:-.5px}
   function renderQuestions(rows){
     const agg=new Map();
     for(const r of rows)for(const h of (r.riwayat||[])){
-      const k=h.kode||h.soal;if(!agg.has(k))agg.set(k,{kode:h.kode,planet:h.planet,soal:h.soal,jawaban:h.jawaban,ref:h.rujukan,n:0,first:0,tries:0,wrong:new Map()});
+      const k=h.sid||h.soal;if(!agg.has(k))agg.set(k,{kode:h.kode,planet:h.planet,soal:h.soal,jawaban:h.jawaban,ref:h.rujukan,n:0,first:0,tries:0,wrong:new Map()});
       const a=agg.get(k);a.n++;a.tries+=h.percobaan;if(h.percobaan===1)a.first++;
       for(const w of (h.salah||[]))a.wrong.set(w,(a.wrong.get(w)||0)+1);
     }
@@ -356,6 +437,70 @@ dialog h2{margin:12px 0 4px;font-size:24px;letter-spacing:-.5px}
     }).join(''):'<tr><td colspan="5" class="empty">Belum ada soal yang dijawab.</td></tr>';
   }
   document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{tab=t.dataset.tab;document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-selected',String(x===t)));$('tab-peserta').hidden=tab!=='peserta';$('tab-soal').hidden=tab!=='soal';});
+
+
+  // ---------- Views ----------
+  let view='hasil';
+  function showView(v){view=v;document.querySelectorAll('#nav button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===v)));$('dash').hidden=v!=='hasil';$('soal-view').hidden=v!=='soal';if(v==='soal'&&!soalLoaded)loadSoal();}
+  document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>showView(b.dataset.view));
+
+  // ---------- Kelola soal ----------
+  const PLANETS=[['Merkurius','Mengenal arsip','#c7b6ed'],['Venus','Arsip dinamis','#ffc794'],['Bumi','Siklus pengelolaan','#75ddcf'],['Mars','Retensi & penyusutan','#ff9c87'],['Jupiter','Pemusnahan yang benar','#e6bf9a'],['Saturnus','Arsip vital & terjaga','#e6c77f'],['Uranus','Akses & keamanan','#9ae2ed'],['Neptunus','Memori bangsa','#9ea9ff']];
+  let soal=[],soalLoaded=false,curPlanet=0,editing=null;
+  $('f-planet').innerHTML=PLANETS.map((p,i)=>`<option value="${i}">${i+1}. ${p[0]} — ${p[1]}</option>`).join('');
+  async function loadSoal(){
+    $('soal-status').textContent='Memuat…';
+    try{soal=await rpc('maa_ambil_soal_pengajar',{p_pin:pin});soalLoaded=true;renderSoal();}
+    catch(err){if(err.code==='28P01'){logout();return;}$('soal-status').textContent=/maa_ambil_soal_pengajar|Could not find/.test(err.message)?'Tabel soal belum dibuat di Supabase (jalankan supabase/soal.sql).':'Gagal memuat: '+err.message;}
+  }
+  function renderSoal(){
+    const act=soal.filter(x=>x.aktif).length;
+    $('soal-status').textContent=`${soal.length} soal di bank · ${act} aktif · tiap misi memakai 16 soal`;
+    $('planets').innerHTML=PLANETS.map((p,i)=>{const all=soal.filter(x=>x.planet===i),a=all.filter(x=>x.aktif).length;
+      return `<button class="planet-chip" data-p="${i}" aria-pressed="${i===curPlanet}"><span class="pdot" style="background:${p[2]}"></span><b>${i+1}. ${p[0]}</b><small class="${a<2?'warn':''}">${a} aktif${all.length>a?' · '+(all.length-a)+' nonaktif':''}</small></button>`;}).join('');
+    const q=$('soal-q').value.trim().toLowerCase();
+    const list=q?soal.filter(x=>[x.soal,x.jawaban_benar,...x.pengecoh,x.pembahasan,x.rujukan].join(' ').toLowerCase().includes(q)):soal.filter(x=>x.planet===curPlanet);
+    $('soal-title').innerHTML=q?`Hasil pencarian “${esc($('soal-q').value.trim())}”<small>${list.length} soal dari semua planet</small>`:`${curPlanet+1}. ${PLANETS[curPlanet][0]}<small>Topik: ${PLANETS[curPlanet][1]} · ${list.length} soal</small>`;
+    $('soal-list').innerHTML=list.length?list.map((x,i)=>`<article class="qcard ${x.aktif?'':'off'}">
+      <div class="qcard-top"><span class="qnum">${q?PLANETS[x.planet][0].toUpperCase()+' · ':''}SOAL ${x.planet+1}.${x.urutan}</span><h3>${esc(x.soal)}</h3>
+       <div class="qactions"><label class="switch" title="Aktif/nonaktifkan"><input type="checkbox" data-toggle="${x.id}" ${x.aktif?'checked':''}> Aktif</label><button class="btn" data-edit="${x.id}">Ubah</button><button class="btn danger" data-del="${x.id}" aria-label="Hapus soal"><svg><use href="#i-trash"/></svg></button></div></div>
+      <div class="opts"><div class="opt right"><b>✓</b>${esc(x.jawaban_benar)}</div>${x.pengecoh.map(t=>`<div class="opt"><b>✗</b>${esc(t)}</div>`).join('')}</div>
+      <div class="qmeta">${x.pembahasan?`<div><b>Pembahasan:</b> ${esc(x.pembahasan)}</div>`:''}${x.petunjuk?`<div><b>Petunjuk:</b> ${esc(x.petunjuk)}</div>`:''}${x.rujukan?`<div><b>Rujukan:</b> UU No. 43 Tahun 2009 · ${esc(x.rujukan)}</div>`:''}</div>
+     </article>`).join(''):`<div class="qcard empty">${q?'Tidak ada soal yang cocok.':'Belum ada soal di planet ini. Klik “Tambah soal”.'}</div>`;
+  }
+  $('planets').addEventListener('click',e=>{const b=e.target.closest('.planet-chip');if(!b)return;curPlanet=+b.dataset.p;$('soal-q').value='';renderSoal();});
+  $('soal-q').oninput=renderSoal;
+  $('soal-list').addEventListener('click',async e=>{
+    const ed=e.target.closest('[data-edit]'),del=e.target.closest('[data-del]');
+    if(ed)openForm(soal.find(x=>x.id===ed.dataset.edit));
+    if(del){const x=soal.find(y=>y.id===del.dataset.del);if(!confirm(`Hapus soal ini secara permanen?\n\n“${x.soal}”\n\nTips: nonaktifkan saja jika mungkin dipakai lagi nanti.`))return;
+      try{await rpc('maa_hapus_soal',{p_pin:pin,p_id:x.id});toast('Soal dihapus');loadSoal();}catch(err){alert(err.message);}}
+  });
+  $('soal-list').addEventListener('change',async e=>{
+    const t=e.target.closest('[data-toggle]');if(!t)return;const x=soal.find(y=>y.id===t.dataset.toggle);
+    try{await rpc('maa_simpan_soal',{p_pin:pin,p:{...x,aktif:t.checked}});x.aktif=t.checked;toast(t.checked?'Soal diaktifkan':'Soal dinonaktifkan');renderSoal();}
+    catch(err){t.checked=!t.checked;alert(err.message);}
+  });
+  function openForm(x){
+    editing=x||null;$('qerr').textContent='';
+    $('qform-eyebrow').textContent=x?`SOAL ${x.planet+1}.${x.urutan}`:'SOAL BARU';$('qform-title').textContent=x?'Ubah soal':'Tambah soal';
+    $('f-planet').value=x?x.planet:curPlanet;$('f-soal').value=x?x.soal:'';$('f-benar').value=x?x.jawaban_benar:'';
+    ['f-p1','f-p2','f-p3'].forEach((id,i)=>$(id).value=x?x.pengecoh[i]||'':'');
+    $('f-why').value=x?x.pembahasan:'';$('f-hint').value=x?x.petunjuk:'';$('f-ref').value=x?x.rujukan:'';$('f-aktif').checked=x?x.aktif:true;
+    $('qdialog').showModal();$('f-soal').focus();
+  }
+  $('add-soal').onclick=()=>openForm(null);
+  $('qcancel').onclick=$('qclose').onclick=()=>$('qdialog').close();
+  $('qform').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const opts=[$('f-benar').value,$('f-p1').value,$('f-p2').value,$('f-p3').value].map(t=>t.trim().toLowerCase());
+    if(new Set(opts).size<4){$('qerr').textContent='Keempat pilihan jawaban harus berbeda satu sama lain.';return;}
+    const body={id:editing?editing.id:null,planet:+$('f-planet').value,soal:$('f-soal').value,jawaban_benar:$('f-benar').value,pengecoh:[$('f-p1').value,$('f-p2').value,$('f-p3').value],pembahasan:$('f-why').value,petunjuk:$('f-hint').value,rujukan:$('f-ref').value,aktif:$('f-aktif').checked};
+    $('qsave').disabled=true;$('qsave').textContent='Menyimpan…';
+    try{await rpc('maa_simpan_soal',{p_pin:pin,p:body});$('qdialog').close();curPlanet=body.planet;$('soal-q').value='';toast(editing?'Perubahan soal disimpan':'Soal baru ditambahkan');await loadSoal();}
+    catch(err){$('qerr').textContent=err.message;}
+    finally{$('qsave').disabled=false;$('qsave').textContent='Simpan soal';}
+  });
 
   // ---------- Detail ----------
   function openDetail(id){
