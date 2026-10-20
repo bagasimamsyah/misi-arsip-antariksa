@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1022">
+<meta name="description" content="Terbang melintasi 8 planet, selamatkan kapsul arsip, dan taklukkan checkpoint kearsipan. Game edukasi interaktif berdasarkan UU No. 43 Tahun 2009.">
+<title>Misi Arsip Antariksa — Jelajah, Pelajari, Lindungi</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%230b1022'/%3E%3Cpath d='M12 39 54 18 38 52 29 36Z' fill='%23daff89'/%3E%3C/svg%3E">
+<style>:root{color-scheme:dark;--bg:#0b1022;--panel:#131a30;--text:#f1f3ef;--muted:#9da7c2;--lime:#d6fc8a;--line:rgba(182,196,232,.15);--accent:#b6a1ff;--danger:#ff9a9f;--font:Inter,'Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px}button,input{font:inherit}button,a,input,summary{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:default;opacity:.42}button, a{touch-action:manipulation}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,canvas:focus-visible{outline:2px solid var(--lime);outline-offset:5px}button{color:var(--text)}svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}button svg{width:19px;height:19px}[hidden]{display:none!important}.app{max-width:1920px;min-height:100svh;margin:auto;display:flex;flex-direction:column}.topbar{height:86px;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:0 42px;border-bottom:1px solid var(--line);background:#0d1225;position:relative;z-index:2}.brand{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--text);font-size:22px;font-weight:800;letter-spacing:4px}.brand-icon{display:grid;place-items:center;width:41px;height:41px;border:1px solid #d6fc8a55;border-radius:13px;color:var(--lime);background:#d6fc8a0c}.brand-icon svg{width:25px;height:25px}.brand-sub{display:block;font-size:8px;letter-spacing:2.2px;color:var(--muted);font-weight:500;margin-top:4px}.hud{display:flex;gap:44px;margin-left:auto;margin-right:auto}.hud-item{display:flex;align-items:center;gap:12px}.hud-item>.icon{color:var(--accent);width:22px;height:22px}.hud-item small{display:block;font-size:8px;letter-spacing:1.7px;color:var(--muted);margin-bottom:5px}.hud-item strong{font-size:20px;font-weight:600;letter-spacing:1.4px;font-variant-numeric:tabular-nums}.shield-bars{display:flex;gap:4px;padding-top:4px}.shield-bars i{width:20px;height:7px;background:var(--lime);border-radius:2px}.shield-bars i.empty{background:#333a50}.top-actions{display:flex;gap:9px;align-items:center}.icon-button{width:37px;height:37px;display:grid;place-items:center;background:transparent;border:1px solid var(--line);border-radius:10px;transition:.15s}.icon-button:hover:not(:disabled){background:#ffffff10;border-color:#ffffff45}.icon-button.muted{color:#8791aa;position:relative}.icon-button.muted:after{content:'';width:22px;height:1px;background:currentColor;position:absolute;transform:rotate(-45deg)}.text-button{display:flex;align-items:center;gap:7px;background:none;border:none;color:var(--muted);font-size:12px;padding:8px;margin-right:9px}.text-button:hover{color:var(--text)}.question-icon{display:grid;place-items:center;width:18px;height:18px;border:1px solid #8290aa;border-radius:50%;font-size:11px}.stage{position:relative;isolation:isolate;flex:1;min-height:570px;height:calc(100svh - 246px);overflow:hidden;background:#0b1022}canvas{display:block;position:absolute;width:100%;height:100%;touch-action:none}.stage-vignette{pointer-events:none;position:absolute;inset:0;background:linear-gradient(90deg,#0b1022b8 0%,transparent 60%),linear-gradient(0deg,#0b1022 0%,transparent 15%,transparent 85%,#0b102240);z-index:1}.intro{position:relative;z-index:3;padding:53px 0 32px 6.2%;width:53%;max-width:730px}.eyebrow{font-size:10px;letter-spacing:2.3px;color:var(--lime);display:flex;gap:9px;align-items:center;font-weight:600}.live-dot{display:inline-block;width:6px;height:6px;background:var(--lime);border-radius:50%;box-shadow:0 0 12px #d6fc8a70;flex-shrink:0}.intro h1{font-size:clamp(35px,3.5vw,64px);font-weight:650;line-height:1.14;letter-spacing:-2.2px;margin:23px 0 17px}.intro h1 span{color:#bdadee}.intro-copy{max-width:405px;font-size:14px;line-height:1.8;color:var(--muted);margin:0 0 25px}.intro-facts{display:flex;gap:22px;color:var(--muted);font-size:11px;margin-bottom:26px}.intro-facts span{border-right:1px solid var(--line);padding-right:22px}.intro-facts span:last-child{border:0;padding-right:0}.intro-facts b{font-size:17px;color:var(--text);font-weight:500;margin-right:5px}.input-label{font-size:9px;letter-spacing:1.3px;color:#c1c9dc;display:block;margin-bottom:8px}.input-label span{text-transform:none;letter-spacing:0;color:var(--muted);margin-left:5px}#pilot-name{width:100%;max-width:382px;background:#131a2caa;border:1px solid #b4c1ed25;border-radius:9px;height:43px;padding:0 14px;color:var(--text);font-size:12px}#pilot-name::placeholder,#class-code::placeholder{color:#8993ad}.id-row{display:flex;gap:10px;max-width:382px}.id-row>div{flex:1;min-width:0}.id-row>div:last-child{flex:.75}#class-code{width:100%;background:#131a2caa;border:1px solid #b4c1ed25;border-radius:9px;height:43px;padding:0 14px;color:var(--text);font-size:12px;text-transform:uppercase}#class-code::placeholder{text-transform:none}.sync-status{font-size:11px!important;margin:4px 0 14px!important;color:#9fb0cc!important}.sync-status.ok{color:var(--lime)!important}.sync-status.err{color:var(--danger)!important}.sync-status button{background:none;border:1px solid #ff9a9f66;color:var(--danger);border-radius:6px;padding:3px 9px;margin-left:8px;font-size:10px}.mode-picker{border:none;padding:0;margin:15px 0 21px;display:flex;gap:10px}.mode-picker legend{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}.mode-picker label{display:flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;min-width:150px}.mode-picker label:has(input:checked){border-color:#d6fc8a6b;background:#d6fc8a08}.mode-picker input{accent-color:var(--lime);margin:0}.mode-picker span{font-size:11px}.mode-picker small{display:block;font-size:9px;color:var(--muted);margin-top:3px}.start-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.primary,.secondary{display:inline-flex;gap:22px;justify-content:center;align-items:center;min-height:45px;padding:12px 22px;border-radius:9px;font-size:12px;font-weight:650;transition:background .16s,transform .16s}.primary{background:var(--lime);border:1px solid var(--lime);color:#1c2814}.primary:hover:not(:disabled){background:#e4ffb0;transform:translateY(-1px)}.secondary{border:1px solid #b0bfec35;background:#151d32;color:var(--text)}.secondary:hover{background:#202b45}.intro-note{display:flex;gap:7px;align-items:center;font-size:9px;color:#9da6bc;margin:17px 0 0}.tiny-dot{width:3px;height:3px;background:var(--muted);border-radius:50%}.hero-label{position:absolute;z-index:2;left:71%;top:74%;display:flex;gap:13px;pointer-events:none}.label-line{height:38px;width:32px;border-top:1px solid #c5c7e15e;border-left:1px solid #c5c7e15e;transform:skewY(-30deg);margin-top:-22px}.hero-label small{display:block;font-size:8px;color:#b4b5cc;letter-spacing:1.7px}.hero-label strong{display:block;font-size:19px;letter-spacing:2.7px;margin:8px 0}.hero-label div>span{font-size:9px;color:var(--muted)}.hero-coordinate{position:absolute;top:30px;right:40px;z-index:2;font-family:monospace;font-size:9px;color:#8d93b0;letter-spacing:1.2px}.hero-coordinate span{padding:0 8px;color:var(--accent)}.route-panel{padding:19px 42px 17px;border-top:1px solid var(--line);background:#0e1427;z-index:2}.route-heading{display:flex;justify-content:space-between;font-size:9px;letter-spacing:1.8px;color:#bfc8dc;margin-bottom:16px}.route-heading>span:last-child{color:#8894af;letter-spacing:.2px}.route{list-style:none;display:grid;grid-template-columns:repeat(8,1fr);padding:0;margin:0}.route li{display:flex;align-items:center;gap:10px;position:relative;color:#7f8aa7}.route li:after{content:'';position:absolute;height:1px;background:#2b344d;left:38px;right:12px;top:15px;z-index:-1}.route li:last-child:after{display:none}.route-dot{width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:var(--planet);box-shadow:inset -9px -6px 8px #050919b0;border:4px solid #0e1427;outline:1px solid #ffffff12;flex-shrink:0;position:relative}.route li.active .route-dot{outline:1px solid var(--lime);box-shadow:inset -9px -6px 8px #05091980,0 0 18px #d6fc8a19}.route li.done .route-dot:after{content:'✓';color:#fff;font-size:12px;font-weight:800;text-shadow:0 1px 4px black}.route-info{background:#0e1427;padding-right:8px}.route strong{display:block;font-size:10px;font-weight:500;margin-bottom:5px}.route small{display:block;font-size:7px;color:#75819b;letter-spacing:.9px}.route li.active strong,.route li.done strong{color:#e9eddc}.route li.active small{color:var(--lime)}.bottom-bar{display:flex;justify-content:space-between;align-items:center;padding:0 42px;height:44px;gap:12px;color:#818da8;font-size:9px;background:#0b1022;z-index:2}.bottom-bar button{background:none;border:none;color:#a2aec5;font-size:10px;display:flex;align-items:center;gap:7px;padding:6px 0}.bottom-bar button:hover{color:var(--lime)}.bottom-bar .icon{width:14px;height:14px}.control-hint{display:flex;align-items:center;gap:8px}kbd{font:9px var(--font);border:1px solid #3a435c;padding:3px 5px;border-radius:4px;color:#c8d0e1}.divider{padding:0 9px}.touch-hint{display:none}.flight-info{position:absolute;top:31px;left:42px;z-index:2;pointer-events:none;width:240px;padding:18px 20px;background:#0b1022bf;border:1px solid var(--line);border-radius:12px;backdrop-filter:blur(12px)}.flight-info h2{font-size:28px;margin:12px 0 4px;letter-spacing:-.8px}.flight-info p{margin:0;color:var(--muted);font-size:12px}.travel-line{height:3px;background:#34405d;margin:17px 0 9px;border-radius:3px}.travel-line>div{height:100%;width:0;background:var(--lime);border-radius:3px}.travel-caption{display:flex;justify-content:space-between;font-size:9px;color:#aab6d0}.flight-info .eyebrow{font-size:8px}.mission-chip{position:absolute;right:36px;top:33px;z-index:2;display:flex;gap:9px;align-items:center;font-size:10px;color:#c4cce1;padding:10px 14px;background:#111a2bbf;border:1px solid var(--line);border-radius:30px;pointer-events:none}.floating-toast{position:absolute;left:50%;top:31px;transform:translateX(-50%);padding:12px 18px;background:#242740f2;border:1px solid #beade959;border-radius:10px;z-index:4;font-size:12px;box-shadow:0 5px 20px #0004;text-align:center;max-width:75%}.dock-button{position:absolute;z-index:4;bottom:58px;left:50%;transform:translateX(-50%);padding:13px 20px;background:var(--lime);border:1px solid #ebffb7;border-radius:9px;color:#253516;font-weight:600;font-size:12px;white-space:nowrap;box-shadow:0 0 28px #d6fc8a22}.dock-button span{margin-left:13px}.flight-footer{position:absolute;bottom:24px;left:42px;right:42px;display:flex;justify-content:space-between;font-size:9px;letter-spacing:1.1px;color:#a8b6ce;z-index:2;pointer-events:none}.flight-footer>span{display:flex;align-items:center;gap:8px}.flight-footer b{color:var(--lime);font-size:14px;margin-left:4px}.capsule-dot{width:9px;height:12px;background:#b5edbd;border-radius:2px;display:inline-block;transform:rotate(15deg)}.mobile-controls{display:none}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.noscript{position:fixed;inset:25% 10%;background:#182139;padding:40px;z-index:100;border:1px solid var(--accent)}
+dialog{position:fixed;color:var(--text);background:#151c32;border:1px solid #a9b8e333;border-radius:20px;box-shadow:0 25px 100px #0009;width:min(590px,calc(100% - 32px));max-height:calc(100dvh - 32px);padding:32px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#56627d #151c32}dialog::backdrop{background:#030816c7;backdrop-filter:blur(9px)}dialog h2{font-size:29px;line-height:1.2;letter-spacing:-.7px;margin:15px 0}dialog p{font-size:13px;line-height:1.75;color:#b1bdd5}dialog .eyebrow{font-size:9px;letter-spacing:1.6px}.dialog-close{position:absolute;right:18px;top:18px}#info-dialog{width:min(630px,calc(100% - 32px))}#info-dialog h2{margin-top:20px;padding-right:22px}.instruction-row{display:flex;gap:13px;padding:15px 0;border-bottom:1px solid var(--line)}.instruction-number{width:25px;height:25px;display:grid;place-items:center;border:1px solid #d6fc8a40;border-radius:8px;color:var(--lime);font-size:11px;flex-shrink:0}.instruction-row h3{font-size:13px;margin:2px 0 4px}.instruction-row p{margin:0;font-size:12px}.source-link{display:block;margin:14px 0;padding:15px;background:#0c1429;border:1px solid var(--line);border-radius:9px;color:#d5c8ff;text-decoration:none;font-size:13px}.source-link small{display:block;color:var(--muted);font-size:10px;margin-top:6px}.source-link:hover{border-color:var(--accent)}.info-note{background:#b6a1ff09;padding:12px 14px;border-left:2px solid var(--accent);font-size:11px!important}.info-controls{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0;color:var(--muted);font-size:11px}.quiz-dialog{width:min(670px,calc(100% - 30px));padding:28px 32px}.quiz-top{display:flex;justify-content:space-between;align-items:center;font-size:9px;letter-spacing:1.5px;color:var(--muted);padding-bottom:19px;border-bottom:1px solid var(--line)}.checkpoint-tag{color:var(--lime)}.checkpoint-tag b{margin-left:7px}.quiz-planet-row{display:flex;align-items:center;gap:11px;margin-top:20px}.mini-planet{width:31px;height:31px;border-radius:50%;background:var(--accent);box-shadow:inset -9px -5px 12px #0009;flex-shrink:0}.quiz-planet-row small{font-size:9px;letter-spacing:1.3px;color:var(--muted)}.quiz-planet-row p{font-size:12px;color:#e5eafa;margin:4px 0 0;line-height:1}.quiz-dots{display:flex;gap:6px;margin-left:auto}.quiz-dots i{height:5px;width:24px;border-radius:3px;background:#37435f}.quiz-dots i.done{background:var(--lime)}.quiz-dots i.current{background:var(--accent)}.quiz-dialog h2{font-size:22px;line-height:1.4;margin:23px 0 7px;letter-spacing:-.3px}.quiz-dialog h2:focus{outline:none}.quiz-instruction{font-size:11px;margin:0 0 18px;color:#9daac4}.answers{display:grid;gap:9px}.answer{width:100%;display:flex;gap:12px;align-items:center;text-align:left;line-height:1.5;font-size:12px;padding:13px 14px;border-radius:9px;border:1px solid #a5b5e32b;background:#0e162b;transition:.14s;color:#d8e0f1}.answer:not(:disabled):hover{border-color:var(--accent);background:#b6a1ff0a}.answer-letter{width:26px;height:26px;border:1px solid #65718d66;border-radius:6px;display:grid;place-items:center;font-size:10px;flex-shrink:0;color:#b2bfd8}.answer.correct{border-color:#d6fc8a;background:#d6fc8a0c;color:#e9f9d6;opacity:1}.answer.correct .answer-letter{border-color:var(--lime);color:var(--lime)}.answer.wrong{border-color:#ff9a9f;opacity:.65}.answer:disabled:not(.correct):not(.wrong){opacity:.48}.feedback{padding:14px 16px;border-radius:9px;background:#d6fc8a0a;border:1px solid #d6fc8a40;margin-top:15px;font-size:12px;line-height:1.65;color:#d3dfbf}.feedback.wrong-feedback{background:#ff9a9f08;border-color:#ff9a9f42;color:#e5b8be}.feedback strong{display:block;font-size:12px;margin-bottom:4px}.feedback a{font-size:10px;color:#c1b1ff;display:inline-block;margin-top:5px}.quiz-bottom{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:21px}.quiz-bottom>span{font-size:10px;color:var(--muted)}.quiz-bottom .primary{font-size:11px;gap:13px;flex-shrink:0;min-height:40px;padding:10px 17px}.quiz-keyboard{margin:17px 0 0!important;text-align:center;font-size:9px!important;color:#7f8ea9!important}.small-dialog{text-align:center;width:min(440px,calc(100% - 32px));padding:38px 32px}.small-dialog .eyebrow{justify-content:center;font-size:8px}.small-dialog h2{margin-top:21px}.small-dialog p{margin:0 0 25px}.full{width:100%;margin:6px 0}.small-dialog>small{display:block;color:#8d9bb7;font-size:10px;line-height:1.7;margin-top:16px}.rescue-symbol{color:var(--accent);font-size:55px;margin-bottom:15px}.result-dialog{width:min(690px,calc(100% - 32px));text-align:center;padding:32px}.result-emblem{display:grid;place-items:center;width:65px;height:65px;border-radius:20px;background:#d6fc8a13;border:1px solid #d6fc8a60;margin:0 auto 21px;transform:rotate(-8deg)}.result-emblem svg{width:34px;height:34px;color:var(--lime)}.result-dialog .eyebrow{justify-content:center;font-size:8px}.result-dialog h2{font-size:37px;margin:15px 0 7px}.result-stats{display:grid;grid-template-columns:repeat(3,1fr);margin:24px 0 12px;background:#0d152a;border:1px solid var(--line);border-radius:12px;padding:20px 10px}.result-stats small{display:block;font-size:8px;letter-spacing:1px;color:var(--muted);margin-bottom:11px}.result-stats strong{font-size:26px;font-weight:500;color:var(--lime)}.result-stats>div+div{border-left:1px solid var(--line)}.best-label{font-size:11px!important;color:#bfb1f1!important}.review-details{text-align:left;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:22px 0;padding:14px 0}.review-details summary{cursor:pointer;font-size:12px;color:#c6d2e8}.review-item{padding:15px 0;border-bottom:1px solid var(--line)}.review-item small{color:var(--accent);font-size:9px}.review-item h3{font-size:12px;line-height:1.6;margin:8px 0}.review-item p{font-size:11px;margin:4px 0}.review-item a{font-size:10px;color:#bcacef}.result-actions{display:flex;gap:10px;justify-content:center}.result-note{font-size:10px!important;color:#8e9bb7!important;margin-bottom:0}
+@media(min-width:1500px){.intro{padding-top:70px}.intro-copy{font-size:16px}.intro-facts{margin-top:30px;margin-bottom:30px}.hero-label{top:73%}}
+@media(max-width:1050px){.topbar{padding:0 24px;height:75px}.hud{gap:24px}.help-label{display:none}.text-button{margin:0}.intro{padding-left:5%;width:55%}.intro h1{font-size:38px}.intro-facts{gap:13px}.intro-facts span{padding-right:13px}.hero-label{left:69%;top:76%}.route-panel{padding-left:24px;padding-right:24px}.route li{gap:6px}.route-dot{width:24px;height:24px}.route strong{font-size:9px}.route small{font-size:6px}.bottom-bar{padding:0 24px}.flight-info{left:24px}.flight-footer{left:24px;right:24px}.mission-chip{right:24px;max-width:39%;line-height:1.5}.stage{height:calc(100svh - 225px)}}
+@media(max-width:720px){.id-row{max-width:340px}#class-code{background:#11192de8}.topbar{height:65px;padding:0 16px;gap:12px}.brand{font-size:18px;gap:8px}.brand-icon{width:32px;height:32px;border-radius:9px}.brand-icon svg{width:21px;height:21px}.brand-sub{font-size:6px;letter-spacing:1.3px}.hud{margin:0 0 0 auto;gap:0}.hud-item{gap:6px}.hud-item>.icon{width:16px;height:16px}.hud-item small{font-size:6px;letter-spacing:1px}.hud-item strong{font-size:17px}.shield-hud{display:none}.top-actions{gap:6px}.icon-button{width:31px;height:31px;border-radius:8px}.icon-button svg{width:16px;height:16px}.text-button{padding:5px}#fullscreen-button{display:none}.stage{height:calc(100svh - 206px);min-height:600px}.intro{width:100%;max-width:440px;padding:42px 25px 25px;background:linear-gradient(90deg,#0b1022d9,#0b102245);min-height:100%}.intro h1{font-size:40px;letter-spacing:-1.6px}.intro-copy{font-size:13px;max-width:330px}.intro-facts{margin-top:22px;margin-bottom:26px}.intro .eyebrow{font-size:8px;letter-spacing:1.5px}#pilot-name{max-width:340px;background:#11192de8}.mode-picker{gap:8px}.mode-picker label{min-width:0;padding:9px 11px;background:#10172abf}.hero-label{display:none}.hero-coordinate{right:20px;top:20px;font-size:7px;opacity:.5}.intro-note{font-size:8px;line-height:1.6}.route-panel{padding:14px 18px 15px}.route-heading{font-size:7px;margin-bottom:14px}.route-heading>span:last-child{font-size:8px}.route li{display:flex;flex-direction:column;align-items:center;gap:7px}.route li:after{left:70%;right:-30%;top:13px}.route-dot{width:26px;height:26px}.route-info{padding:0;background:transparent;text-align:center}.route strong{font-size:7px;font-weight:500;letter-spacing:-.2px;margin:0}.route small{display:none}.bottom-bar{padding:0 18px;height:36px;font-size:8px}.bottom-bar button{font-size:8px;flex-shrink:0}.control-hint{display:none}.touch-hint{display:block;line-height:1.5;font-size:7px;max-width:190px}.flight-info{top:18px;left:18px;width:190px;padding:13px 15px}.flight-info h2{font-size:23px;margin:9px 0 5px}.flight-info p{font-size:10px}.flight-info .eyebrow{font-size:7px}.travel-line{margin-top:13px}.travel-caption{font-size:8px}.mission-chip{right:15px;top:20px;max-width:35%;padding:8px 10px;font-size:8px;gap:6px}.mission-chip .live-dot{width:4px;height:4px}.flight-footer{bottom:18px;left:18px;right:18px;font-size:7px;letter-spacing:.5px}.floating-toast{top:180px;max-width:86%;width:max-content;font-size:11px}.mobile-controls{position:absolute;bottom:50px;left:18px;z-index:4;display:grid;grid-template-columns:repeat(3,42px);grid-template-rows:repeat(2,38px);gap:4px}.mobile-controls button{touch-action:none;background:#19223cce;color:#e1e7f8;border:1px solid #7e91bf5e;border-radius:8px;font-size:17px;user-select:none}.mobile-controls button:active{background:#d6fc8a3d}.mobile-controls button:first-child{grid-column:2}.mobile-controls button:nth-child(2){grid-column:1}.dock-button{left:auto;right:16px;bottom:69px;transform:none;font-size:10px;padding:12px;max-width:180px}.dock-button span{display:none}.quiz-dialog{padding:21px 20px}.quiz-dialog h2{font-size:19px;margin-top:18px}.quiz-top{font-size:8px;padding-bottom:14px}.quiz-planet-row{margin-top:16px}.answer{font-size:11px;padding:11px;gap:9px}.answer-letter{width:23px;height:23px}.quiz-bottom{align-items:flex-start;flex-direction:column;gap:10px}.quiz-bottom .primary{width:100%}.quiz-keyboard{display:none}.quiz-instruction{font-size:10px}.feedback{font-size:11px;padding:12px}.result-dialog{padding:26px 20px}.result-dialog h2{font-size:31px}.result-stats strong{font-size:23px}.result-stats small{font-size:6px}.result-actions{flex-direction:column}.result-stats{padding:17px 5px}dialog{padding:28px 23px}.small-dialog{padding:32px 24px}dialog h2{font-size:26px}}
+@media(max-width:390px){.topbar{gap:7px;padding:0 12px}.brand-sub{display:none}.brand{font-size:16px}.hud-item>.icon{display:none}.intro h1{font-size:35px}.intro{padding-left:21px;padding-right:21px}.mode-picker small{font-size:8px}.mode-picker label{padding:9px}.start-actions .secondary{font-size:10px;padding:12px}.intro-facts{gap:12px}.intro-facts span{padding-right:12px}.mission-chip{max-width:29%;font-size:7px}.dock-button{max-width:150px;font-size:9px}}
+@media(pointer:coarse) and (min-width:721px){.mobile-controls{position:absolute;bottom:48px;left:24px;z-index:4;display:flex;gap:6px}.mobile-controls button{touch-action:none;background:#19223cd9;border:1px solid #7e91bf5e;border-radius:8px;width:42px;height:38px}.control-hint{display:none}.touch-hint{display:block}.dock-button{left:auto;right:25px;transform:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true"><defs>
+ <symbol id="i-plane" viewBox="0 0 24 24"><path d="m3 15 19-12-7 19-4-8-8 1Z"/><path d="m11 14 11-11"/></symbol>
+ <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+ <symbol id="i-sound" viewBox="0 0 24 24"><path d="m11 4-5 4H3v8h3l5 4V4Zm4 4a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+ <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14m8-14v14"/></symbol>
+ <symbol id="i-full" viewBox="0 0 24 24"><path d="M3 9V3h6m6 0h6v6m0 6v6h-6m-6 0H3v-6"/></symbol>
+ <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5C9 3 5 3 2 4v15c4-1 7-1 10 1 3-2 6-2 10-1V4c-3-1-7-1-10 1v15"/></symbol>
+ <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 2 9 4v6c0 5-9 10-9 10S3 17 3 12V6l9-4Z"/><path d="m8 12 3 3 5-6"/></symbol>
+ <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 7 8 1-6 5 2 8-7-4-7 4 2-8-6-5 8-1 3-7Z"/></symbol>
+ <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+</defs></svg>
+<div class="app" id="app">
+ <header class="topbar">
+  <a class="brand" href="#" id="brand" aria-label="Misi Arsip Antariksa, beranda"><span class="brand-icon"><svg><use href="#i-plane"/></svg></span><span>ORBIT<span class="brand-sub">MISI ARSIP ANTARIKSA</span></span></a>
+  <div class="hud" aria-label="Status misi">
+   <div class="hud-item"><svg class="icon"><use href="#i-star"/></svg><span><small>SKOR MISI</small><strong id="score">0000</strong></span></div>
+   <div class="hud-item shield-hud"><svg class="icon"><use href="#i-shield"/></svg><span><small>PERISAI</small><span class="shield-bars" id="shields" aria-label="3 dari 3 perisai"><i></i><i></i><i></i></span></span></div>
+  </div>
+  <nav class="top-actions" aria-label="Pengaturan permainan">
+   <button class="text-button" id="help-button"><span class="question-icon">?</span><span class="help-label">Cara bermain</span></button>
+   <button class="icon-button muted" id="sound-button" aria-label="Aktifkan suara" aria-pressed="false" title="Suara (M)"><svg><use href="#i-sound"/></svg></button>
+   <button class="icon-button" id="fullscreen-button" aria-label="Layar penuh" title="Layar penuh"><svg><use href="#i-full"/></svg></button>
+   <button class="icon-button" id="pause-button" aria-label="Jeda permainan" title="Jeda (P)" disabled><svg><use href="#i-pause"/></svg></button>
+  </nav>
+ </header>
+ <main class="stage" id="stage">
+  <canvas id="space" tabindex="0" aria-label="Area penerbangan. Gunakan tombol panah atau WASD untuk menggerakkan pesawat. Dekati cincin checkpoint dan tekan Enter untuk masuk.">Browser Anda perlu mendukung HTML Canvas untuk menjalankan game.</canvas>
+  <div class="stage-vignette" aria-hidden="true"></div>
+  <section class="intro" id="intro" aria-labelledby="intro-title">
+   <div class="eyebrow"><span class="live-dot"></span> AKADEMI ARSIP · MISI 001</div>
+   <h1 id="intro-title">Jelajahi semesta.<br><span>Lindungi ingatan.</span></h1>
+   <p class="intro-copy">Kendalikan pesawatmu, lintasi planet, dan buka setiap gerbang dengan pengetahuan kearsipan.</p>
+   <div class="intro-facts"><span><b>08</b> planet</span><span><b>16</b> tantangan</span><span><b>01</b> misi besar</span></div>
+   <div class="id-row"><div><label class="input-label" for="pilot-name">NAMA PESERTA <span>wajib</span></label>
+   <input id="pilot-name" maxlength="40" autocomplete="name" placeholder="Nama lengkapmu" required></div>
+   <div><label class="input-label" for="class-code">KODE KELAS <span>dari pengajar</span></label>
+   <input id="class-code" maxlength="30" autocomplete="off" placeholder="mis. ARS-01"></div></div>
+   <fieldset class="mode-picker"><legend>Gaya penerbangan</legend><label><input type="radio" name="mode" value="explore" checked><span>Jelajah <small>Asteroid & tantangan</small></span></label><label><input type="radio" name="mode" value="relaxed"><span>Santai <small>Tanpa kerusakan</small></span></label></fieldset>
+   <div class="start-actions"><button class="primary" id="start-button">Mulai misi <svg><use href="#i-arrow"/></svg></button><button class="secondary" id="resume-button" hidden>Lanjutkan misi</button></div>
+   <p class="intro-note"><span class="tiny-dot"></span> Tanpa batas waktu menjawab · Hasil otomatis terkirim ke pengajar</p>
+  </section>
+  <div class="hero-label" id="hero-label"><span class="label-line"></span><div><small>PESAWAT PENJELAJAH</small><strong>ARKA–01</strong><span>Membawa ingatan, melintasi zaman.</span></div></div>
+  <div class="hero-coordinate" id="hero-coordinate">SEKTOR 43.2009 <span>•</span> SISTEM TATA SURYA</div>
+  <section class="flight-info" id="flight-info" hidden aria-label="Tujuan penerbangan"><div class="eyebrow" id="sector-label">SEKTOR 01 / 08</div><h2 id="planet-title">Merkurius</h2><p id="planet-topic">Mengenal arsip</p><div class="travel-line"><div id="travel-fill"></div></div><div class="travel-caption"><span id="travel-text">Menuju checkpoint</span><span id="travel-percent">0%</span></div></section>
+  <div class="mission-chip" id="mission-chip" hidden><span class="live-dot"></span><span id="chip-text">Kumpulkan kapsul. Hindari asteroid.</span></div>
+  <div class="floating-toast" id="toast" role="status" hidden></div>
+  <button class="dock-button" id="dock-button" hidden>Masuk checkpoint <span>↵</span></button>
+  <div class="mobile-controls" id="mobile-controls" hidden aria-label="Kontrol layar sentuh"><button data-move="up" aria-label="Naik">↑</button><button data-move="left" aria-label="Ke kiri">←</button><button data-move="down" aria-label="Turun">↓</button><button data-move="right" aria-label="Ke kanan">→</button></div>
+  <div class="flight-footer" id="flight-footer" hidden><span><i class="capsule-dot"></i> KAPSUL ARSIP <b id="collected">0</b></span><span id="flight-mode">MODE JELAJAH</span></div>
+ </main>
+ <section class="route-panel" aria-label="Peta perjalanan"><div class="route-heading"><span>RUTE EKSPEDISI</span><span id="route-summary">8 planet menantimu</span></div><ol class="route" id="route"></ol></section>
+ <footer class="bottom-bar"><span class="control-hint"><kbd>W A S D</kbd> / <kbd>↑ ← ↓ →</kbd> Kemudikan pesawat <span class="divider">·</span> <kbd>P</kbd> Jeda</span><span class="touch-hint">Geser di area antariksa atau gunakan tombol arah</span><button id="sources-button"><svg class="icon"><use href="#i-book"/></svg> Referensi materi</button></footer>
+</div>
+<dialog id="quiz-dialog" class="quiz-dialog" aria-labelledby="quiz-title">
+ <div class="quiz-top"><span class="checkpoint-tag">CHECKPOINT <b id="quiz-checkpoint">01</b></span><span id="quiz-count">SOAL 1 / 2</span></div>
+ <div class="quiz-planet-row"><span class="mini-planet" id="quiz-planet"></span><div><small id="quiz-location">MERKURIUS</small><p id="quiz-topic">Mengenal arsip</p></div><div class="quiz-dots" id="quiz-dots"><i></i><i></i></div></div>
+ <h2 id="quiz-title" tabindex="-1"></h2>
+ <p class="quiz-instruction">Pilih jawaban yang tepat untuk membuka jalur berikutnya.</p>
+ <div class="answers" id="answers"></div>
+ <div class="feedback" id="feedback" role="status" hidden></div>
+ <div class="quiz-bottom"><span id="quiz-status">Gerbang terkunci · Jawab dengan benar</span><button class="primary" id="quiz-next" disabled>Soal berikutnya <svg><use href="#i-arrow"/></svg></button></div>
+ <p class="quiz-keyboard">Gunakan tombol 1–4 untuk memilih jawaban. Tidak ada batas waktu.</p>
+</dialog>
+<dialog id="info-dialog" aria-labelledby="info-title"><button class="dialog-close icon-button" id="info-close" aria-label="Tutup"><svg><use href="#i-close"/></svg></button><div class="eyebrow">PUSAT KENDALI</div><h2 id="info-title" tabindex="-1"></h2><div id="info-content"></div></dialog>
+<dialog id="pause-dialog" class="small-dialog" aria-labelledby="pause-title"><div class="eyebrow">TRANSMISI DIHENTIKAN SEMENTARA</div><h2 id="pause-title">Tarik napas, Pilot.</h2><p>Pesawat aman. Lanjutkan saat kamu siap.</p><button class="primary full" id="continue-button">Lanjutkan penerbangan <svg><use href="#i-arrow"/></svg></button><button class="secondary full" id="home-button">Kembali ke beranda</button><small>Progres tersimpan sampai checkpoint terakhir yang selesai.</small></dialog>
+<dialog id="rescue-dialog" class="small-dialog" aria-labelledby="rescue-title"><div class="rescue-symbol">✦</div><div class="eyebrow">SISTEM PENYELAMATAN AKTIF</div><h2 id="rescue-title">Saatnya isi ulang.</h2><p>Perisai habis. Ulangi penerbangan pada planet ini; checkpoint yang sudah selesai tetap aman.</p><button class="primary full" id="retry-button">Terbang lagi <svg><use href="#i-arrow"/></svg></button><button class="secondary full" id="relax-button">Lanjut dengan mode Santai</button></dialog>
+<dialog id="result-dialog" class="result-dialog" aria-labelledby="result-title"><div class="result-emblem"><svg><use href="#i-star"/></svg></div><div class="eyebrow">EKSPEDISI SELESAI · 8 / 8 PLANET</div><h2 id="result-title">Penjaga Ingatan.</h2><p id="result-message"></p><div class="result-stats"><div><small>SKOR AKHIR</small><strong id="result-score">0</strong></div><div><small>BENAR PERTAMA</small><strong id="result-correct">0/16</strong></div><div><small>KAPSUL ARSIP</small><strong id="result-capsules">0</strong></div></div><p class="best-label" id="best-label"></p><p class="sync-status" id="sync-status" role="status"></p><details class="review-details"><summary>Lihat catatan belajar & pembahasan</summary><div id="review-list"></div></details><div class="result-actions"><button class="primary" id="replay-button">Misi baru <svg><use href="#i-arrow"/></svg></button><button class="secondary" id="download-button">Unduh hasil (.txt)</button></div><p class="result-note">Semua gerbang dibuka dengan jawaban benar. Ketepatan pertama menunjukkan jawaban benar tanpa percobaan ulang.</p></dialog>
+<div id="announcer" class="sr-only" aria-live="polite"></div>
+<noscript><div class="noscript">Aktifkan JavaScript di browser untuk menjalankan Misi Arsip Antariksa.</div></noscript>
+<script>// Bank soal: 4 soal per planet; 2 dipilih acak pada awal setiap misi.
+// Jawaban benar berada pada indeks 0 di sumber, lalu diacak saat ditampilkan.
+const PLANETS = [
+  {name:'Merkurius',topic:'Mengenal arsip',color:'#c7b6ed',dark:'#665587',type:'rock'},
+  {name:'Venus',topic:'Arsip dinamis',color:'#ffc794',dark:'#9b6346',type:'bands'},
+  {name:'Bumi',topic:'Siklus pengelolaan',color:'#75ddcf',dark:'#245a9b',type:'earth'},
+  {name:'Mars',topic:'Retensi & penyusutan',color:'#ff9c87',dark:'#92494d',type:'rock'},
+  {name:'Jupiter',topic:'Pemusnahan yang benar',color:'#e6bf9a',dark:'#82594e',type:'bands'},
+  {name:'Saturnus',topic:'Arsip vital & terjaga',color:'#e6c77f',dark:'#9c784d',type:'rings'},
+  {name:'Uranus',topic:'Akses & keamanan',color:'#9ae2ed',dark:'#447e9d',type:'bands'},
+  {name:'Neptunus',topic:'Memori bangsa',color:'#9ea9ff',dark:'#424ca4',type:'bands'}
+];
+const BANK = [
+ [
+  {q:'Manakah yang paling tepat menggambarkan arsip?',a:['Rekaman kegiatan atau peristiwa dalam berbagai bentuk dan media.','Hanya surat kertas yang sudah berumur lebih dari 10 tahun.','Semua benda lama yang disimpan di gudang.','Hanya dokumen yang diberi stempel rahasia.'],why:'Arsip merupakan rekaman yang dibuat atau diterima dalam pelaksanaan kegiatan. Medianya bisa kertas, foto, rekaman suara, maupun elektronik.',hint:'Perhatikan hubungan dengan kegiatan dan keragaman medianya.',ref:'Pasal 1 angka 2'},
+  {q:'Rekaman digital rapat resmi dibuat dan diterima dalam kegiatan instansi. Apakah rekaman itu dapat menjadi arsip?',a:['Ya, arsip dapat berbentuk rekaman elektronik.','Tidak, karena tidak dicetak di kertas.','Hanya jika sudah disimpan selama 30 tahun.','Tidak, karena arsip hanya berbentuk surat.'],why:'Definisi arsip mencakup berbagai bentuk dan media sesuai perkembangan teknologi, termasuk rekaman digital kegiatan.',hint:'Arsip tidak dibatasi pada media kertas.',ref:'Pasal 1 angka 2'},
+  {q:'Istilah “kearsipan” mengacu pada apa?',a:['Hal-hal yang berkenaan dengan arsip.','Kegiatan mengirim surat saja.','Penjualan dokumen yang tidak terpakai.','Pekerjaan merawat gedung kantor saja.'],why:'Kearsipan mencakup hal-hal yang berkenaan dengan arsip, bukan hanya penyimpanan atau pengiriman surat.',hint:'Pilih pengertian yang mencakup keseluruhan urusan arsip.',ref:'Pasal 1 angka 1'},
+  {q:'Apa yang menjadi ciri seorang arsiparis menurut UU Kearsipan?',a:['Memiliki kompetensi kearsipan serta fungsi, tugas, dan tanggung jawab melaksanakan kegiatan kearsipan.','Setiap orang yang pernah menyimpan sebuah surat.','Hanya orang yang mengelola buku perpustakaan.','Semua pegawai yang bekerja di gedung tua.'],why:'Kompetensi arsiparis diperoleh melalui pendidikan formal dan/atau pendidikan dan pelatihan kearsipan, disertai tanggung jawab dalam kegiatan kearsipan.',hint:'Perhatikan kompetensi dan tanggung jawab profesinya.',ref:'Pasal 1 angka 10'}
+ ],
+ [
+  {q:'Berkas layanan digunakan hampir setiap hari. Berdasarkan frekuensi penggunaannya, berkas itu termasuk…',a:['Arsip aktif.','Arsip inaktif.','Arsip statis secara otomatis.','Arsip yang wajib segera dimusnahkan.'],why:'Arsip aktif ditandai oleh frekuensi penggunaan yang tinggi dan/atau terus-menerus.',hint:'Kuncinya adalah seberapa sering arsip digunakan.',ref:'Pasal 1 angka 5'},
+  {q:'Frekuensi penggunaan berkas telah menurun. Berkas tersebut termasuk…',a:['Arsip inaktif.','Arsip aktif.','Arsip yang bukan milik instansi lagi.','Arsip yang otomatis tidak bernilai guna.'],why:'Frekuensi penggunaan yang menurun menunjukkan arsip inaktif. Penurunan penggunaan tidak otomatis membolehkan pemusnahan.',hint:'Jarang digunakan tidak sama dengan boleh dibuang.',ref:'Pasal 1 angka 6'},
+  {q:'Apa ciri utama arsip dinamis?',a:['Digunakan langsung dalam kegiatan pencipta arsip dan disimpan untuk jangka waktu tertentu.','Selalu disimpan selamanya di museum.','Hanya berbentuk video yang bergerak.','Tidak pernah dipakai dalam pekerjaan.'],why:'Kata dinamis merujuk pada penggunaannya dalam kegiatan pencipta arsip, bukan gerakan gambar atau jenis medianya.',hint:'Hubungkan istilah dinamis dengan kegiatan organisasi.',ref:'Pasal 1 angka 3'},
+  {q:'Siapa yang bertanggung jawab atas pengelolaan arsip dinamis?',a:['Pencipta arsip.','Pengunjung museum.','Pembeli kertas bekas.','Semua pengikut akun media sosial instansi.'],why:'Pengelolaan arsip dinamis menjadi tanggung jawab pencipta arsip; pengelolaan arsip statis menjadi tanggung jawab lembaga kearsipan.',hint:'Pilih pihak yang menjalankan kegiatan dan memiliki arsip dinamis.',ref:'Pasal 9 ayat (3)–(4)'}
+ ],
+ [
+  {q:'Apa rangkaian utama pengelolaan arsip dinamis?',a:['Penciptaan; penggunaan dan pemeliharaan; penyusutan.','Penciptaan; penjualan; pembuangan bebas.','Pemindaian; penghapusan semua naskah asli.','Penyimpanan tanpa pencatatan dan tanpa batas waktu.'],why:'Pengelolaan arsip dinamis meliputi penciptaan, penggunaan dan pemeliharaan, serta penyusutan sesuai ketentuan.',hint:'Pengelolaan mencakup sejak arsip tercipta sampai penyusutannya.',ref:'Pasal 40 ayat (2)'},
+  {q:'Penciptaan arsip harus memenuhi tiga komponen. Apa saja?',a:['Struktur, isi, dan konteks.','Warna, harga, dan ukuran rak.','Nama aplikasi, kata sandi, dan jaringan.','Lama rapat, jumlah kursi, dan ruang kantor.'],why:'Struktur, isi, dan konteks membantu menjelaskan bentuk, informasi, serta lingkungan penciptaan arsip.',hint:'Komponen tersebut menjelaskan bentuk, informasi, dan latar penciptaannya.',ref:'Pasal 41 ayat (3)'},
+  {q:'Manakah perangkat yang mendukung pengelolaan arsip dinamis secara efektif?',a:['Tata naskah dinas, klasifikasi arsip, JRA, serta sistem klasifikasi keamanan dan akses arsip.','Daftar warna folder dan daftar belanja kantor saja.','Daftar hadir pegawai tanpa instrumen kearsipan.','Satu kata sandi bersama untuk semua dokumen.'],why:'Empat instrumen ini membantu penciptaan, pengelompokan, retensi, serta pengaturan keamanan dan akses arsip.',hint:'Pilih paket yang mengatur naskah, klasifikasi, retensi, dan akses.',ref:'Pasal 40 ayat (4)'},
+  {q:'Mengapa arsip dinamis perlu dipelihara?',a:['Untuk menjaga keamanan informasi dan fisik arsip.','Agar semua arsip dapat dibuka siapa saja.','Agar arsip bisa diubah tanpa jejak.','Agar arsip tidak perlu ditemukan kembali.'],why:'Pemeliharaan arsip dinamis dilakukan oleh pencipta arsip untuk menjamin keamanan informasi sekaligus fisiknya.',hint:'Keamanan harus mencakup isi maupun media arsip.',ref:'Pasal 45 ayat (1)'}
+ ],
+ [
+  {q:'Apa fungsi Jadwal Retensi Arsip (JRA)?',a:['Menjadi pedoman penyusutan dan penyelamatan arsip melalui informasi retensi, jenis arsip, dan rekomendasi akhirnya.','Menentukan jam masuk dan pulang pegawai.','Menentukan harga jual seluruh dokumen.','Mengganti semua aturan akses arsip.'],why:'JRA memuat sekurang-kurangnya retensi, jenis arsip, serta rekomendasi musnah, dinilai kembali, atau permanen.',hint:'Retensi berkaitan dengan jangka waktu penyimpanan.',ref:'Pasal 1 angka 22'},
+  {q:'Dalam penyusutan, arsip inaktif dipindahkan dari mana ke mana?',a:['Dari unit pengolah ke unit kearsipan.','Dari unit kearsipan ke toko kertas bekas.','Dari lembaga kearsipan ke semua pengunjung.','Dari kantor ke rumah pribadi tanpa pencatatan.'],why:'Pemindahan arsip inaktif dari unit pengolah ke unit kearsipan merupakan salah satu bentuk penyusutan arsip.',hint:'Pemindahan tetap berada dalam tata kelola pencipta arsip.',ref:'Pasal 49 huruf a'},
+  {q:'Manakah tiga bentuk penyusutan arsip?',a:['Pemindahan arsip inaktif, pemusnahan sesuai ketentuan, dan penyerahan arsip statis.','Pemindaian, fotokopi, dan pencetakan.','Penggantian nama folder, pewarnaan, dan penjilidan.','Pengumpulan, penjualan, dan pembuangan sembarang.'],why:'Penyusutan bukan sekadar membuang arsip. Kegiatannya meliputi pemindahan, pemusnahan yang sah, serta penyerahan arsip statis.',hint:'Ada tindakan untuk arsip inaktif, arsip yang boleh musnah, dan arsip statis.',ref:'Pasal 49 huruf a–c'},
+  {q:'Apakah kementerian sebagai lembaga negara wajib memiliki JRA?',a:['Ya, lembaga negara wajib memiliki JRA.','Tidak, JRA hanya untuk museum.','Hanya jika semua arsip berbentuk kertas.','Tidak, retensi boleh ditentukan setiap pegawai sendiri.'],why:'Kewajiban memiliki JRA berlaku bagi lembaga negara, pemerintahan daerah, perguruan tinggi negeri, BUMN dan/atau BUMD.',hint:'JRA adalah instrumen wajib bagi lembaga negara.',ref:'Pasal 48 ayat (1)'}
+ ],
+ [
+  {q:'Retensi arsip sudah habis, tetapi arsip masih berkaitan dengan penyelesaian suatu perkara. Apa tindakan yang tepat?',a:['Tidak memusnahkannya karena masih terkait penyelesaian perkara.','Segera membakarnya agar ruang penyimpanan lega.','Menghapusnya karena retensi adalah satu-satunya syarat.','Menjualnya tanpa memeriksa ketentuan lain.'],why:'Salah satu syarat pemusnahan adalah arsip tidak berkaitan dengan penyelesaian proses suatu perkara. Habis retensi saja belum cukup.',hint:'Perhatikan status perkara, bukan hanya umur arsip.',ref:'Pasal 51 ayat (1) huruf d'},
+  {q:'Pilih kondisi yang memenuhi seluruh syarat materiil pemusnahan arsip.',a:['Tidak bernilai guna; retensi habis dan berketerangan musnah menurut JRA; tidak dilarang aturan; tidak terkait penyelesaian perkara.','Sudah lama, berdebu, dan memenuhi lemari.','Sudah dipindai, tanpa pemeriksaan syarat lain.','Pemilik ruangan meminta seluruh berkas dibuang.'],why:'Keempat syarat harus diperhatikan bersama. Pemusnahan juga tetap wajib mengikuti prosedur yang benar.',hint:'Pilih jawaban yang memeriksa nilai guna, JRA, larangan, dan perkara.',ref:'Pasal 51 ayat (1)–(2)'},
+  {q:'Siapa yang bertanggung jawab atas pemusnahan arsip pada pencipta arsip?',a:['Pimpinan pencipta arsip yang bersangkutan.','Petugas kebersihan atas keputusan sendiri.','Pihak yang membeli kertas bekas.','Pengunjung kantor yang membutuhkan ruang.'],why:'Pemusnahan arsip pada pencipta arsip merupakan tanggung jawab pimpinan pencipta arsip dan harus mengikuti prosedur yang benar.',hint:'Keputusan ini merupakan tanggung jawab organisasi.',ref:'Pasal 51 ayat (2)–(3)'},
+  {q:'Berkas telah dipindai. Apakah naskah aslinya otomatis boleh dimusnahkan?',a:['Tidak; syarat dan prosedur pemusnahan tetap harus dipenuhi.','Ya, setiap hasil pindai otomatis mengizinkan pemusnahan.','Ya, selama hasil pindai bisa dibuka di ponsel.','Ya, jika folder digital diberi nama yang rapi.'],why:'Pemindaian bukan pengganti penilaian nilai guna, pemeriksaan JRA, larangan hukum, status perkara, dan prosedur pemusnahan.',hint:'Digitalisasi tidak menghapus kewajiban pemeriksaan pemusnahan.',ref:'Pasal 51 ayat (1)–(2)'}
+ ],
+ [
+  {q:'Apa yang membedakan arsip vital?',a:['Menjadi syarat dasar kelangsungan operasional, tidak dapat diperbarui, dan tidak tergantikan jika rusak atau hilang.','Semua arsip yang berwarna merah.','Hanya arsip yang dicetak pada kertas mahal.','Arsip yang boleh diganti dengan cerita lisan.'],why:'Arsip vital sangat penting bagi kelangsungan operasional pencipta arsip dan tidak tergantikan apabila rusak atau hilang.',hint:'Fokus pada kelangsungan operasional dan sifat tidak tergantikan.',ref:'Pasal 1 angka 4'},
+  {q:'Arsip terjaga berkaitan dengan apa?',a:['Keberadaan dan kelangsungan hidup bangsa dan negara.','Semua dokumen yang kebetulan berada di lemari terkunci.','Hanya catatan belanja pribadi pegawai.','Semua kertas yang belum diberi nomor.'],why:'Arsip terjaga adalah arsip negara yang berkaitan dengan keberadaan dan kelangsungan hidup bangsa dan negara; keutuhan, keamanan, dan keselamatannya harus dijaga.',hint:'Kategori ini ditentukan oleh kepentingannya bagi bangsa dan negara.',ref:'Pasal 1 angka 8'},
+  {q:'Menurut Pasal 43 ayat (2), kapan pemberkasan dan pelaporan arsip kegiatan strategis yang dimaksud pada ayat (1) wajib dilakukan?',a:['Paling lama 1 tahun sejak terjadinya kegiatan.','Paling lama 10 tahun setelah pegawai pensiun.','Hanya setelah arsip diminta wartawan.','Tidak ada batas waktu sama sekali.'],why:'Pemberkasan dan pelaporan kepada ANRI dilakukan paling lama satu tahun sejak kegiatan. Ini berbeda dari tenggat penyerahan salinan autentik pada ayat (3).',hint:'Tenggat dihitung sejak terjadinya kegiatan.',ref:'Pasal 43 ayat (1)–(2)'},
+  {q:'Apa saja kegiatan dalam program arsip vital?',a:['Identifikasi; pelindungan dan pengamanan; penyelamatan dan pemulihan.','Pewarnaan; penjualan; pembuangan.','Penghapusan; penggantian; pengabaian.','Peminjaman bebas tanpa pencatatan.'],why:'Program arsip vital dimulai dengan identifikasi, dilanjutkan pelindungan dan pengamanan, serta penyelamatan dan pemulihan.',hint:'Program ini menyiapkan pencegahan sekaligus penanganan gangguan.',ref:'Pasal 56 ayat (2)'}
+ ],
+ [
+  {q:'Kepada siapa pencipta arsip wajib menyediakan arsip dinamis?',a:['Pengguna arsip yang berhak.','Siapa pun tanpa memeriksa hak akses.','Hanya orang yang membayar secara pribadi.','Tidak kepada siapa pun, tanpa pengecualian.'],why:'Pencipta arsip wajib menyediakan arsip dinamis bagi pengguna yang berhak. Hak akses dan ketentuan kerahasiaan tetap diperhatikan.',hint:'Akses harus memperhatikan kewenangan pengguna.',ref:'Pasal 42 ayat (1)'},
+  {q:'Pembukaan arsip kepada umum dapat mengungkap rahasia atau data pribadi. Apa yang dimungkinkan UU?',a:['Pencipta arsip dapat menutup akses dengan alasan tersebut dan wajib menjaga kerahasiaan arsip tertutup.','Semua data pribadi harus diumumkan tanpa pengecualian.','Arsip harus langsung dimusnahkan.','Data boleh dijual kepada pihak yang menawarkan harga tertinggi.'],why:'UU mengatur alasan penutupan akses, termasuk pengungkapan rahasia atau data pribadi. Arsip tertutup wajib dijaga kerahasiaannya.',hint:'Perlindungan informasi berbeda dari pemusnahan arsip.',ref:'Pasal 44 ayat (1) huruf h dan ayat (2)'},
+  {q:'Apa kewajiban pengelola arsip dinamis terhadap arsip yang dikelolanya?',a:['Menjaga keautentikan, keutuhan, keamanan, dan keselamatannya.','Mengubah isi arsip agar tampak lebih menguntungkan.','Membagikan seluruh arsip ke akun pribadi.','Menghilangkan bagian yang dianggap merepotkan.'],why:'Arsip harus tetap autentik dan utuh serta terlindungi keamanan dan keselamatannya agar dapat dipercaya.',hint:'Pertahankan keaslian serta kelengkapan arsip.',ref:'Pasal 40 ayat (5)'},
+  {q:'Bagaimana akses arsip statis dilaksanakan?',a:['Memperhatikan keutuhan, keamanan, keselamatan, serta ketentuan keterbukaan dan ketertutupan.','Membuka seluruh arsip tanpa mempertimbangkan ketentuan apa pun.','Melarang seluruh pengguna selamanya.','Mengubah isi arsip sebelum diberikan kepada pengguna.'],why:'Kemudahan akses arsip statis dijamin dengan tetap memperhatikan pelindungan arsip dan aturan keterbukaan atau ketertutupan.',hint:'Layanan akses berjalan bersama perlindungan arsip.',ref:'Pasal 64 ayat (1)–(3)'}
+ ],
+ [
+  {q:'Kondisi mana yang sesuai dengan definisi arsip statis?',a:['Bernilai guna kesejarahan, retensi habis, berketerangan permanen, dan telah diverifikasi ANRI dan/atau lembaga kearsipan.','Semua arsip yang tidak dipindahkan dari meja.','Semua arsip yang berumur satu tahun.','Semua arsip yang jarang dibaca tanpa penilaian lain.'],why:'Status arsip statis ditentukan oleh nilai kesejarahan, retensi, keterangan permanen, dan verifikasi; bukan semata-mata usia arsip.',hint:'Usia arsip saja tidak menentukan status statis.',ref:'Pasal 1 angka 7'},
+  {q:'Apa rangkaian pengelolaan arsip statis menurut Pasal 59 ayat (2)?',a:['Akuisisi, pengolahan, preservasi, dan akses.','Penciptaan, penjualan, pembuangan, dan penggantian.','Pembelian rak dan pengecatan ruangan saja.','Pemindaian lalu pemusnahan seluruh naskah.'],why:'Arsip statis dikelola melalui akuisisi, pengolahan, preservasi, dan akses agar dapat diselamatkan dan dimanfaatkan.',hint:'Rangkaian ini mencakup penerimaan, penataan, pelestarian, dan pemanfaatan.',ref:'Pasal 59 ayat (2)'},
+  {q:'Apa tujuan preservasi arsip statis?',a:['Menjamin keselamatan dan kelestarian arsip statis.','Membuat semua arsip menjadi rahasia permanen.','Mengganti informasi sejarah agar lebih menarik.','Menghilangkan seluruh identitas penciptanya.'],why:'Preservasi menjaga keselamatan dan kelestarian arsip statis melalui tindakan preventif dan kuratif.',hint:'Preservasi berkaitan dengan pelestarian.',ref:'Pasal 63 ayat (1)–(2)'},
+  {q:'Mengapa arsip autentik dan terpercaya penting bagi penyelenggaraan kearsipan?',a:['Agar tersedia sebagai alat bukti yang sah.','Agar setiap orang dapat mengubah bukti kegiatan.','Agar organisasi tidak perlu mempertanggungjawabkan kegiatan.','Agar semua dokumen dapat dijual bebas.'],why:'Salah satu tujuan penyelenggaraan kearsipan adalah menjamin ketersediaan arsip autentik dan terpercaya sebagai alat bukti yang sah.',hint:'Hubungkan arsip dengan pembuktian dan pertanggungjawaban.',ref:'Pasal 3 huruf b'}
+ ]
+];
+
+'use strict';
+(() => {
+  const $ = id => document.getElementById(id);
+  const canvas = $('space'), ctx = canvas.getContext('2d');
+  const STORE = 'orbit-arsip-v1', BEST = 'orbit-arsip-best-v1';
+  const SOURCE = 'https://peraturan.bpk.go.id/Details/38788/uu-no-43-tahun-2009';
+  // Ubah durasi di sini untuk sesi pelatihan yang lebih singkat atau lebih panjang.
+  const FLIGHT_SECONDS = 22, QUESTIONS_PER_PLANET = 2;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w=1200,h=600,dpr=1,clock=0,last=0,phase='menu',session=null,flight=0;
+  let ship={x:200,y:300,tilt:0},keys=new Set(),touchTarget=null,invincible=0;
+  let rocks=[],capsules=[],particles=[],spawnRock=0,spawnCapsule=0,portal=null;
+  let wrongPicks=[],quizIndex=0,currentQuestion=null,optionOrder=[],tries=0,solved=false,answerButtons=[];
+  let checkpointScore=0,checkpointCapsules=0,toastTimer=0,hudTick=0,infoPrior='menu';
+  let audioCtx=null,sound=false,saveWarning=false,animFrame=0;
+  const rand=(a,b)=>a+Math.random()*(b-a),clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
+  const pad=n=>String(n).padStart(2,'0');
+  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const shuffle=a=>{const r=[...a];for(let i=r.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];}return r;};
+  const storage={get(k){try{return JSON.parse(localStorage.getItem(k));}catch{return null;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch{return false;}},remove(k){try{localStorage.removeItem(k);}catch{}}};
+  // ===== Pengiriman hasil ke Supabase (dibaca pengajar di /pengajar) =====
+  const SUPABASE_URL='https://jpfdkgxmfmudrpoueojv.supabase.co';
+  const SUPABASE_KEY='sb_publishable_5r2mKCbO6l2OVyEzi28oEQ_GUzFIkOa';
+  const PENDING='orbit-arsip-pending-v1';
+  function newId(){try{return crypto.randomUUID();}catch{return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return (c==='x'?r:(r&3|8)).toString(16);});}}
+  function classCode(){return ($('class-code').value||'').trim().toUpperCase().replace(/\s+/g,'-').slice(0,30);}
+  function payload(done){
+    return {id:session.uid,nama:session.name,kelas:session.kelas||'',mode:session.mode,status:done?'selesai':'bermain',planet:session.stage,skor:session.score,benar_pertama:session.firstCorrect,dijawab:session.answered,salah:session.wrong,kapsul:session.collected,waktu_aktif:Math.round(session.elapsed),
+      riwayat:session.history.map((r,i)=>{const q=BANK[r.stage][r.id];return {no:i+1,planet:PLANETS[r.stage].name,topik:PLANETS[r.stage].topic,kode:`${r.stage+1}.${r.id+1}`,soal:q.q,jawaban:q.a[0],percobaan:r.attempts,salah:Array.isArray(r.wrong)?r.wrong:[],rujukan:q.ref};})};
+  }
+  async function post(body){
+    const res=await fetch(SUPABASE_URL+'/rest/v1/rpc/maa_kirim_hasil',{method:'POST',headers:{'Content-Type':'application/json',apikey:SUPABASE_KEY,Authorization:'Bearer '+SUPABASE_KEY},body:JSON.stringify({p:body}),keepalive:body.status!=='selesai'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+  }
+  async function sync(done=false){
+    if(!session||!session.uid)return;
+    const body=payload(done),el=$('sync-status');
+    if(done){el.className='sync-status';el.textContent='Mengirim hasil ke pengajar…';}
+    let pend={};try{pend=JSON.parse(localStorage.getItem(PENDING))||{};}catch{}
+    pend[body.id]=body;
+    const ok=[];
+    for(const [id,b] of Object.entries(pend)){try{await post(b);ok.push(id);}catch{}}
+    for(const id of ok)delete pend[id];
+    try{Object.keys(pend).length?localStorage.setItem(PENDING,JSON.stringify(pend)):localStorage.removeItem(PENDING);}catch{}
+    if(done){
+      if(ok.includes(body.id)){el.className='sync-status ok';el.textContent=`✓ Hasil terkirim ke pengajar${body.kelas?' · Kelas '+body.kelas:''}`;}
+      else{el.className='sync-status err';el.innerHTML='Hasil belum terkirim (periksa internet). <button type="button" id="sync-retry">Kirim ulang</button>';$('sync-retry').onclick=()=>sync(true);}
+    }
+  }
+  try{const u=new URLSearchParams(location.search).get('kelas');const idn=JSON.parse(localStorage.getItem('orbit-arsip-identity')||'null');
+    if(idn){$('pilot-name').value=idn.name||'';$('class-code').value=idn.kelas||'';}
+    if(u)$('class-code').value=u.trim().toUpperCase().slice(0,30);}catch{}
+  function savedSession(){
+    const s=storage.get(STORE);
+    if(!s||s.version!==1||!Number.isInteger(s.stage)||s.stage<0||s.stage>=8||!['explore','relaxed'].includes(s.mode)||typeof s.name!=='string')return null;
+    if(!['score','collected','firstCorrect','wrong','elapsed','shield','answered'].every(k=>Number.isFinite(s[k])&&s[k]>=0))return null;
+    if(s.shield<1||s.shield>3||s.answered!==s.stage*QUESTIONS_PER_PLANET||s.firstCorrect>s.answered)return null;
+    if(!Array.isArray(s.plan)||s.plan.length!==8||!s.plan.every((p,i)=>Array.isArray(p)&&p.length===2&&new Set(p).size===2&&p.every(n=>Number.isInteger(n)&&BANK[i][n])))return null;
+    if(!Array.isArray(s.history)||s.history.length!==s.answered||!s.history.every(r=>Number.isInteger(r.stage)&&BANK[r.stage]&&Number.isInteger(r.id)&&BANK[r.stage][r.id]&&Number.isInteger(r.attempts)&&r.attempts>0))return null;
+    return s;
+  }
+  function persist(){
+    if(!storage.set(STORE,session)&&!saveWarning){saveWarning=true;toast('Browser membatasi penyimpanan. Progres berlaku selama tab ini terbuka.');}
+  }
+  function soundTone(freq,duration=.12,type='sine',gain=.04){
+    if(!sound)return;
+    try{audioCtx ||= new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();
+      const osc=audioCtx.createOscillator(),amp=audioCtx.createGain();osc.type=type;osc.frequency.setValueAtTime(freq,audioCtx.currentTime);amp.gain.setValueAtTime(gain,audioCtx.currentTime);amp.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);osc.connect(amp);amp.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration);
+    }catch{sound=false;updateSoundButton();}
+  }
+  function updateSoundButton(){$('sound-button').classList.toggle('muted',!sound);$('sound-button').setAttribute('aria-pressed',String(sound));$('sound-button').setAttribute('aria-label',sound?'Matikan suara':'Aktifkan suara');}
+  function toast(text){$('toast').textContent=text;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3300);}
+  function announce(text){$('announcer').textContent=text;}
+  function resetInputs(){keys.clear();touchTarget=null;}
+  function showDialog(id){resetInputs();$(id).showModal();}
+  function closeDialogs(){for(const d of document.querySelectorAll('dialog[open]'))d.close();}
+  function showFlightUI(active){
+    for(const id of ['intro','hero-label','hero-coordinate'])$(id).hidden=active;
+    for(const id of ['flight-info','mission-chip','flight-footer','mobile-controls'])$(id).hidden=!active;
+    $('pause-button').disabled=!active;canvas.tabIndex=active?0:-1;
+  }
+  function renderRoute(){
+    const stage=session?.stage??0,finished=phase==='result';
+    $('route').innerHTML=PLANETS.map((p,i)=>`<li class="${i<stage||finished?'done':i===stage?'active':''}" ${i===stage&&!finished?'aria-current="step"':''} style="--planet:${p.color}" aria-label="${esc(p.name)}: ${i<stage||finished?'selesai':i===stage?'tujuan saat ini':'terkunci'}"><span class="route-dot" aria-hidden="true"></span><span class="route-info"><strong>${esc(p.name)}</strong><small>${i<stage||finished?'SELESAI':i===stage?'TUJUAN '+pad(i+1):'SEKTOR '+pad(i+1)}</small></span></li>`).join('');
+    $('route-summary').textContent=phase==='menu'?'8 planet menantimu':`${finished?8:stage} / 8 checkpoint selesai`;
+  }
+  function updateHUD(){
+    $('score').textContent=String(session?.score??0).padStart(4,'0');
+    const shield=session?.shield??3;
+    [...$('shields').children].forEach((el,i)=>el.classList.toggle('empty',i>=shield));
+    $('shields').setAttribute('aria-label',`${shield} dari 3 perisai`);
+    $('collected').textContent=session?.collected??0;
+    const percent=Math.min(100,Math.floor(flight/FLIGHT_SECONDS*100));
+    $('travel-fill').style.width=percent+'%';$('travel-percent').textContent=percent+'%';
+    $('travel-text').textContent=portal?'Dekati cincin checkpoint':'Menuju checkpoint';
+    $('flight-mode').textContent=session?.mode==='relaxed'?'MODE SANTAI · PERISAI AMAN':`MODE JELAJAH · PERISAI ${shield}/3`;
+  }
+  function menu(){
+    closeDialogs();phase='menu';session=null;resetInputs();rocks=[];capsules=[];portal=null;
+    showFlightUI(false);$('dock-button').hidden=true;$('toast').hidden=true;
+    const save=savedSession();$('resume-button').hidden=!save;
+    if(save){$('resume-button').textContent=`Lanjut: ${PLANETS[save.stage].name}`;$('pilot-name').value=save.name;if(save.kelas)$('class-code').value=save.kelas;}
+    updateHUD();renderRoute();
+  }
+  function start(resume=false){
+    closeDialogs();
+    if(resume){session=savedSession();if(!session){menu();toast('Simpanan tidak tersedia. Mulai misi baru.');return;}session.uid ||= newId();if(typeof session.kelas!=='string')session.kelas=classCode();}
+    else{
+    const nm=$('pilot-name').value.trim().slice(0,40);
+    if(!nm){toast('Tulis nama lengkapmu dulu agar hasilnya tercatat oleh pengajar.');$('pilot-name').focus();return;}
+    try{localStorage.setItem('orbit-arsip-identity',JSON.stringify({name:nm,kelas:classCode()}));}catch{}
+    session={version:1,uid:newId(),kelas:classCode(),name:nm,mode:document.querySelector('input[name="mode"]:checked').value,stage:0,score:0,shield:3,collected:0,firstCorrect:0,answered:0,wrong:0,elapsed:0,history:[],plan:BANK.map(group=>shuffle(group.map((_,i)=>i)).slice(0,QUESTIONS_PER_PLANET))};}
+    persist();sync();beginFlight();soundTone(420,.2);toast(`Selamat terbang, ${session.name}! Dekati kapsul hijau untuk mengumpulkannya.`);
+  }
+  function beginFlight(retry=false){
+    closeDialogs();phase='flying';flight=0;invincible=2.5;portal=null;rocks=[];capsules=[];particles=[];resetInputs();
+    if(retry){session.score=checkpointScore;session.collected=checkpointCapsules;session.shield=3;}
+    checkpointScore=session.score;checkpointCapsules=session.collected;
+    ship={x:w*.23,y:h*.53,tilt:0};spawnRock=2;spawnCapsule=.6;
+    const p=PLANETS[session.stage];$('planet-title').textContent=p.name;$('planet-topic').textContent=p.topic;
+    $('sector-label').textContent=`SEKTOR ${pad(session.stage+1)} / 08`;
+    $('chip-text').textContent='Kumpulkan kapsul. Hindari asteroid.';
+    $('dock-button').hidden=true;showFlightUI(true);updateHUD();renderRoute();canvas.focus({preventScroll:true});announce(`Menuju ${p.name}. ${p.topic}.`);
+  }
+  function openQuiz(){
+    if(phase!=='flying'||!portal)return;
+    phase='quiz';rocks=[];capsules=[];resetInputs();$('dock-button').hidden=true;$('pause-button').disabled=true;quizIndex=0;
+    renderQuestion();showDialog('quiz-dialog');$('quiz-title').focus();soundTone(620,.3);
+  }
+  function renderQuestion(){
+    tries=0;wrongPicks=[];solved=false;optionOrder=shuffle([0,1,2,3]);
+    currentQuestion=BANK[session.stage][session.plan[session.stage][quizIndex]];
+    const p=PLANETS[session.stage];$('quiz-checkpoint').textContent=pad(session.stage+1);$('quiz-count').textContent=`SOAL ${quizIndex+1} / ${QUESTIONS_PER_PLANET}`;
+    $('quiz-location').textContent=p.name.toUpperCase();$('quiz-topic').textContent=p.topic;$('quiz-planet').style.background=p.color;
+    $('quiz-title').textContent=currentQuestion.q;$('feedback').hidden=true;$('feedback').innerHTML='';
+    $('quiz-next').disabled=true;$('quiz-next').innerHTML=`${quizIndex===1?(session.stage===7?'Selesaikan misi':'Lanjut terbang'):'Soal berikutnya'} <svg><use href="#i-arrow"/></svg>`;
+    $('quiz-status').textContent='Gerbang terkunci · Jawab dengan benar';
+    [...$('quiz-dots').children].forEach((e,i)=>e.className=i<quizIndex?'done':i===quizIndex?'current':'');
+    $('answers').replaceChildren();answerButtons=optionOrder.map((n,i)=>{
+      const b=document.createElement('button');b.className='answer';b.innerHTML=`<span class="answer-letter" aria-hidden="true">${i+1}</span><span>${esc(currentQuestion.a[n])}</span>`;b.addEventListener('click',()=>answer(i));$('answers').appendChild(b);return b;
+    });
+    $('quiz-dialog').scrollTop=0;
+  }
+  function answer(index){
+    if(phase!=='quiz'||solved||!answerButtons[index]||answerButtons[index].disabled)return;
+    const right=optionOrder[index]===0;tries++;
+    const fb=$('feedback');fb.hidden=false;fb.classList.toggle('wrong-feedback',!right);
+    if(!right){
+      session.wrong++;wrongPicks.push(currentQuestion.a[optionOrder[index]]);answerButtons[index].classList.add('wrong');answerButtons[index].disabled=true;
+      fb.innerHTML=`<strong>Belum tepat. Kamu boleh mencoba lagi.</strong>${esc(currentQuestion.hint)}<br><span>Gerbang tetap terkunci sampai jawaban benar.</span>`;
+      soundTone(180,.13,'triangle');
+      const next=answerButtons.find(b=>!b.disabled);if(next)next.focus({preventScroll:true});
+    }else{
+      solved=true;session.answered++;if(tries===1)session.firstCorrect++;
+      const points=[100,70,40,25][Math.min(tries-1,3)];session.score+=points;
+      session.history.push({stage:session.stage,id:session.plan[session.stage][quizIndex],attempts:tries,wrong:wrongPicks.slice()});
+      answerButtons.forEach(b=>b.disabled=true);answerButtons[index].classList.add('correct');
+      fb.innerHTML=`<strong>Tepat! +${points} poin</strong>${esc(currentQuestion.why)}<br><a href="${SOURCE}" target="_blank" rel="noopener noreferrer">UU No. 43 Tahun 2009 · ${esc(currentQuestion.ref)} ↗</a>`;
+      $('quiz-next').disabled=false;$('quiz-status').textContent=quizIndex===1?'Gerbang terbuka · Siap melanjutkan':'Satu jawaban lagi untuk membuka gerbang';
+      soundTone(740,.2);$('quiz-next').focus({preventScroll:true});updateHUD();
+    }
+  }
+  function nextQuestion(){
+    if(phase!=='quiz'||!solved)return;
+    if(quizIndex<QUESTIONS_PER_PLANET-1){quizIndex++;renderQuestion();$('quiz-title').focus();return;}
+    $('quiz-dialog').close();session.score+=50;session.shield=Math.min(3,session.shield+1);session.stage++;
+    if(session.stage===8){finish();return;}
+    persist();sync();beginFlight();toast(`Checkpoint selesai! +50 poin · Tujuan: ${PLANETS[session.stage].name}`);
+  }
+  function finish(){
+    phase='result';storage.remove(STORE);showFlightUI(true);$('pause-button').disabled=true;resetInputs();
+    const bestKey=BEST+'-'+session.mode,prev=storage.get(bestKey),best=Math.max(Number(prev)||0,session.score);storage.set(bestKey,best);
+    $('result-message').textContent=`${session.name}, kamu telah membuka seluruh gerbang dan menuntaskan 16 soal kearsipan. Ingatan bangsa melanjutkan perjalanannya.`;
+    $('result-score').textContent=session.score.toLocaleString('id-ID');$('result-correct').textContent=`${session.firstCorrect}/16`;$('result-capsules').textContent=session.collected;
+    $('best-label').textContent=`Rekor mode ${session.mode==='relaxed'?'Santai':'Jelajah'} di perangkat ini: ${best.toLocaleString('id-ID')} poin · Waktu aktif ${formatTime(session.elapsed)}`;
+    $('review-list').innerHTML=session.history.map((r,i)=>{const q=BANK[r.stage][r.id];return `<article class="review-item"><small>${pad(i+1)} · ${esc(PLANETS[r.stage].name)} · ${r.attempts===1?'Benar pada percobaan pertama':r.attempts+' percobaan'}</small><h3>${esc(q.q)}</h3><p><b>Jawaban:</b> ${esc(q.a[0])}</p><p>${esc(q.why)}</p><a href="${SOURCE}" target="_blank" rel="noopener noreferrer">UU No. 43 Tahun 2009 · ${esc(q.ref)} ↗</a></article>`;}).join('');
+    document.querySelector('.review-details').open=false;sync(true);updateHUD();renderRoute();showDialog('result-dialog');soundTone(880,.5);
+  }
+  function formatTime(t){return `${Math.floor(t/60)} m ${String(Math.floor(t%60)).padStart(2,'0')} d` ;}
+  function download(){
+    if(phase!=='result')return;
+    const text=['MISI ARSIP ANTARIKSA — HASIL BELAJAR',`Pilot: ${session.name}`,`Tanggal: ${new Date().toLocaleString('id-ID')}`,`Mode: ${session.mode==='relaxed'?'Santai':'Jelajah'}`,`Checkpoint: 8/8`, `Skor: ${session.score}`,`Benar pada percobaan pertama: ${session.firstCorrect}/16`, `Kapsul terkumpul: ${session.collected}`,`Waktu aktif: ${formatTime(session.elapsed)}`,'','CATATAN BELAJAR',...session.history.map((r,i)=>{const q=BANK[r.stage][r.id];return `\n${i+1}. ${PLANETS[r.stage].name} — ${q.q}\nJawaban: ${q.a[0]}\nPembahasan: ${q.why}\nPercobaan: ${r.attempts}\nDasar: UU No. 43 Tahun 2009, ${q.ref}`;}),'',`Sumber: ${SOURCE}`,'Hasil permainan untuk refleksi belajar; bukan sertifikat kompetensi.'].join('\n');
+    const url=URL.createObjectURL(new Blob(['\uFEFF'+text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='Hasil_Misi_Arsip_Antariksa.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);
+  }
+  function pause(){if(phase!=='flying')return;phase='paused';showDialog('pause-dialog');}
+  function unpause(){if(phase!=='paused')return;$('pause-dialog').close();phase='flying';last=performance.now();canvas.focus({preventScroll:true});}
+  const HELP=`<div class="instruction-row"><span class="instruction-number">01</span><div><h3>Kemudikan ARKA–01</h3><p>Pesawat melaju otomatis. Gunakan tombol panah atau WASD untuk menghindari asteroid dan mengambil kapsul hijau (+10 poin). Di layar sentuh, geser pada area antariksa atau gunakan tombol arah.</p></div></div><div class="instruction-row"><span class="instruction-number">02</span><div><h3>Temukan cincin checkpoint</h3><p>Setelah perjalanan mencapai 100%, cincin bercahaya muncul di sisi kanan. Terbanglah mendekatinya. Masuk langsung ke cincin, atau gunakan tombol “Masuk checkpoint” / Enter saat sudah dekat. Cincin menunggu sampai kamu masuk.</p></div></div><div class="instruction-row"><span class="instruction-number">03</span><div><h3>Buka gerbang dengan pengetahuan</h3><p>Jawab 2 soal dengan benar untuk melanjutkan. Jawaban salah mendapat petunjuk dan bisa dicoba lagi. Poin jawaban: 100 pada percobaan pertama, lalu 70, 40, atau 25. Checkpoint selesai memberi +50 poin dan memulihkan 1 perisai.</p></div></div><div class="instruction-row"><span class="instruction-number">04</span><div><h3>Tuntaskan 8 planet</h3><p>Mode Jelajah memiliki 3 perisai. Jika habis, ulangi penerbangan planet yang sama; poin kapsul pada percobaan yang gagal diulang. Mode Santai tanpa kerusakan. Rekor kedua mode disimpan terpisah.</p></div></div><div class="info-controls"><span><kbd>P</kbd> / <kbd>Esc</kbd> Jeda</span><span><kbd>M</kbd> Suara</span><span><kbd>1–4</kbd> Jawaban</span></div><p class="info-note">Progres disimpan setelah setiap checkpoint selesai, pada browser dan perangkat ini. Menutup atau memuat ulang tab akan kembali ke awal penerbangan setelah checkpoint terakhir. Saat tab tidak aktif, penerbangan dijeda. Tidak ada batas waktu menjawab.</p>`;
+  const SOURCES=`<p>Bank berisi 32 soal; setiap misi memilih 2 dari 4 soal di masing-masing planet, dengan pilihan jawaban yang diacak. Materi disusun dari <b>Undang-Undang Nomor 43 Tahun 2009 tentang Kearsipan</b>.</p><a class="source-link" href="${SOURCE}" target="_blank" rel="noopener noreferrer">UU No. 43 Tahun 2009 — JDIH BPK ↗<small>Naskah resmi, metadata, dan status peraturan</small></a><a class="source-link" href="https://jdih.kemenkeu.go.id/dok/uu-43-tahun-2009" target="_blank" rel="noopener noreferrer">Salinan rujukan — JDIH Kementerian Keuangan ↗<small>Undang-Undang tentang Kearsipan</small></a><p>Topik: pengertian dan jenis arsip (Pasal 1, 9); pengelolaan dinamis (Pasal 40–45); retensi dan penyusutan (Pasal 48–51); arsip terjaga (Pasal 43); arsip vital (Pasal 56); arsip statis (Pasal 59, 63–64); arsip sebagai alat bukti (Pasal 3).</p><p class="info-note">Rujukan pasal tersedia dalam setiap pembahasan. Soal dan ilustrasi adalah media belajar, bukan pernyataan afiliasi resmi dengan ANRI. Tata surya digambarkan secara artistik, bukan simulasi skala astronomi. Rujukan diperiksa 20 Oktober 2026.</p><p style="font-size:11px">Game berjalan di browser tanpa akun. Nama, progres, dan rekor disimpan lokal; tidak dikirim ke server oleh game. Tautan referensi memerlukan internet.</p>`;
+  function openInfo(kind){
+    if(document.querySelector('dialog[open]'))return;
+    infoPrior=phase;if(phase==='flying')phase='info';
+    $('info-title').textContent=kind==='help'?'Panduan penerbangan':'Di balik setiap jawaban';$('info-content').innerHTML=kind==='help'?HELP:SOURCES;showDialog('info-dialog');$('info-title').focus();
+  }
+  function closeInfo(){$('info-dialog').close();if(infoPrior==='flying'){phase='flying';last=performance.now();canvas.focus({preventScroll:true});}}
+  $('start-button').addEventListener('click',()=>start(false));$('resume-button').addEventListener('click',()=>start(true));
+  $('quiz-next').addEventListener('click',nextQuestion);$('pause-button').addEventListener('click',pause);$('continue-button').addEventListener('click',unpause);
+  $('home-button').addEventListener('click',menu);$('brand').addEventListener('click',e=>{e.preventDefault();if(phase==='flying')pause();});
+  $('retry-button').addEventListener('click',()=>beginFlight(true));$('relax-button').addEventListener('click',()=>{session.mode='relaxed';beginFlight(true);});
+  $('replay-button').addEventListener('click',()=>{menu();$('start-button').focus();});$('download-button').addEventListener('click',download);
+  $('help-button').addEventListener('click',()=>openInfo('help'));$('sources-button').addEventListener('click',()=>openInfo('sources'));$('info-close').addEventListener('click',closeInfo);
+  $('sound-button').addEventListener('click',()=>{sound=!sound;updateSoundButton();soundTone(520);});
+  if(!document.fullscreenEnabled)$('fullscreen-button').hidden=true;
+  $('fullscreen-button').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await $('app').requestFullscreen();}catch{toast('Layar penuh tidak tersedia di browser ini.');}});
+  $('dock-button').addEventListener('click',()=>{if(canDock())openQuiz();});
+  $('quiz-dialog').addEventListener('cancel',e=>{e.preventDefault();$('quiz-status').textContent='Selesaikan kedua soal untuk melanjutkan misi.';});
+  $('rescue-dialog').addEventListener('cancel',e=>e.preventDefault());$('result-dialog').addEventListener('cancel',e=>{e.preventDefault();menu();});
+  $('pause-dialog').addEventListener('cancel',e=>{e.preventDefault();unpause();});$('info-dialog').addEventListener('cancel',e=>{e.preventDefault();closeInfo();});
+  const movement={ArrowUp:'up',KeyW:'up',ArrowDown:'down',KeyS:'down',ArrowLeft:'left',KeyA:'left',ArrowRight:'right',KeyD:'right'};
+  document.addEventListener('keydown',e=>{
+    if(/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;
+    if(phase==='flying'&&movement[e.code]){e.preventDefault();keys.add(movement[e.code]);touchTarget=null;}
+    if(e.repeat)return;
+    if(e.code==='KeyP'){if(phase==='flying'){e.preventDefault();pause();}else if(phase==='paused'){e.preventDefault();unpause();}}
+    if(e.code==='Escape'&&phase==='flying'){e.preventDefault();pause();}
+    if(e.code==='KeyM'&&!document.querySelector('dialog[open]'))$('sound-button').click();
+    if(e.code==='Enter'&&phase==='flying'&&canDock()){e.preventDefault();openQuiz();}
+    if(phase==='quiz'&&/^[1-4]$/.test(e.key)){e.preventDefault();answer(Number(e.key)-1);}
+  });
+  document.addEventListener('keyup',e=>{if(movement[e.code])keys.delete(movement[e.code]);});
+  window.addEventListener('blur',()=>{resetInputs();if(phase==='flying')pause();});
+  document.addEventListener('visibilitychange',()=>{resetInputs();last=performance.now();if(document.hidden&&phase==='flying')pause();});
+  document.querySelectorAll('[data-move]').forEach(b=>{b.addEventListener('pointerdown',e=>{if(phase!=='flying')return;e.preventDefault();keys.add(b.dataset.move);touchTarget=null;b.setPointerCapture(e.pointerId);});for(const type of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(type,()=>keys.delete(b.dataset.move));});
+  function aim(e){const r=canvas.getBoundingClientRect();touchTarget={x:clamp(e.clientX-r.left,38,w-38),y:clamp(e.clientY-r.top,44,h-48)};}
+  canvas.addEventListener('pointerdown',e=>{if(phase!=='flying')return;e.preventDefault();canvas.focus({preventScroll:true});canvas.setPointerCapture(e.pointerId);aim(e);});
+  canvas.addEventListener('pointermove',e=>{if(phase==='flying'&&canvas.hasPointerCapture(e.pointerId))aim(e);});
+  for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,()=>touchTarget=null);
+  function resize(){
+    const oldW=w,oldH=h,r=canvas.getBoundingClientRect();w=Math.max(300,r.width);h=Math.max(260,r.height);dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+    ship.x=clamp(ship.x/oldW*w,38,w-38);ship.y=clamp(ship.y/oldH*h,44,h-48);if(portal){portal.x=w*.82;portal.y=h*.53;portal.r=portalRadius();}rocks=[];capsules=[];resetInputs();
+  }
+  new ResizeObserver(resize).observe($('stage'));
+  const portalRadius=()=>Math.min(88,h*.14,w*.15);
+  function canDock(){return phase==='flying'&&portal&&Math.hypot(ship.x-portal.x,ship.y-portal.y)<portal.r+85;}
+  function burst(x,y,color,n=12){for(let i=0;i<n;i++)particles.push({x,y,vx:rand(-90,90),vy:rand(-90,90),life:rand(.25,.7),color});}
+  function update(dt){
+    if(phase==='flying'||phase==='quiz')session.elapsed+=dt;
+    if(phase!=='flying')return;
+    flight+=dt;invincible=Math.max(0,invincible-dt);
+    let dx=(keys.has('right')?1:0)-(keys.has('left')?1:0),dy=(keys.has('down')?1:0)-(keys.has('up')?1:0);
+    if(touchTarget){dx=touchTarget.x-ship.x;dy=touchTarget.y-ship.y;const length=Math.hypot(dx,dy);if(length>3){dx/=Math.max(length,35);dy/=Math.max(length,35);}else{dx=0;dy=0;}}
+    else if(dx&&dy){dx/=Math.SQRT2;dy/=Math.SQRT2;}
+    const speed=Math.min(w*.64,340);ship.x=clamp(ship.x+dx*speed*dt,38,w-38);ship.y=clamp(ship.y+dy*speed*dt,44,h-48);ship.tilt+=(dy*.25-ship.tilt)*Math.min(1,dt*8);
+    const worldSpeed=Math.min(210,w*.23)*(session.mode==='relaxed'?.8:1);
+    if(!portal){
+      spawnRock-=dt;spawnCapsule-=dt;
+      if(spawnRock<=0&&flight<FLIGHT_SECONDS-2.5){const y=rand(85,h-80),r=rand(15,24);rocks.push({x:w+45,y,r,rot:rand(0,6),speed:rand(.8,1.2),shape:Array.from({length:9},()=>rand(.75,1.2))});spawnRock=rand(1.3,2.1)-session.stage*.055;}
+      if(spawnCapsule<=0&&flight<FLIGHT_SECONDS-1.5){let y=rand(h*.32,h*.77);capsules.push({x:w+30,y,phase:rand(0,6),taken:false});spawnCapsule=rand(1.7,2.4);}
+      if(flight>=FLIGHT_SECONDS){portal={x:w+80,y:h*.53,r:portalRadius()};rocks=[];capsules=[];$('chip-text').textContent='Cincin tiba! Arahkan pesawat ke checkpoint.';toast('Checkpoint terbuka. Terbang ke cincin bercahaya di kanan.');announce('Checkpoint muncul. Dekati cincin di sisi kanan.');soundTone(650,.25);}
+    }
+    if(portal){portal.x=Math.max(w*.82,portal.x-worldSpeed*dt);const dist=Math.hypot(ship.x-portal.x,ship.y-portal.y);$('dock-button').hidden=!canDock();if(dist<Math.max(24,portal.r*.5)){openQuiz();return;}}
+    for(const rock of rocks){rock.x-=worldSpeed*rock.speed*dt;rock.rot+=dt*.2;if(Math.hypot(rock.x-ship.x,rock.y-ship.y)<rock.r+17&&invincible<=0){invincible=1.7;burst(ship.x,ship.y,'#ffb49d',16);if(session.mode==='explore'){session.shield--;soundTone(100,.18,'sawtooth',.025);toast(`Asteroid! Perisai ${session.shield}/3`);if(session.shield<=0){phase='rescue';$('pause-button').disabled=true;updateHUD();showDialog('rescue-dialog');return;}}}}
+    for(const c of capsules){c.x-=worldSpeed*dt;if(!c.taken&&Math.hypot(c.x-ship.x,c.y-ship.y)<36){c.taken=true;session.score+=10;session.collected++;burst(c.x,c.y,'#d6fc8a',9);soundTone(950,.07,'sine',.025);}}
+    rocks=rocks.filter(r=>r.x>-50);capsules=capsules.filter(c=>c.x>-30&&!c.taken);
+    for(const p of particles){p.x+=p.vx*dt;p.y+=p.vy*dt;p.life-=dt;}particles=particles.filter(p=>p.life>0);
+    hudTick+=dt;if(hudTick>.1){hudTick=0;updateHUD();}
+  }
+
+  // Semua visual digambar dengan Canvas, tanpa aset atau permintaan jaringan.
+  const stars=Array.from({length:170},()=>({x:Math.random(),y:Math.random(),r:rand(.45,1.5),a:rand(.25,.85),speed:rand(.3,1)}));
+  const planetTextures=PLANETS.map((p,index)=>{
+    const c=document.createElement('canvas');c.width=c.height=420;const g=c.getContext('2d'),r=192;
+    let seed=431+index*100;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
+    g.save();g.beginPath();g.arc(210,210,r,0,Math.PI*2);g.clip();
+    const bg=g.createLinearGradient(70,50,360,380);bg.addColorStop(0,p.color);bg.addColorStop(1,p.dark);g.fillStyle=bg;g.fillRect(0,0,420,420);
+    if(p.type==='rock'){
+      for(let i=0;i<55;i++){const x=rnd()*420,y=rnd()*420,rr=3+rnd()*24;g.fillStyle='rgba(13,12,34,.12)';g.beginPath();g.ellipse(x,y,rr,rr*.65,-.4,0,7);g.fill();g.strokeStyle='rgba(255,255,255,.09)';g.lineWidth=2;g.stroke();}
+    }else if(p.type==='earth'){
+      for(let i=0;i<13;i++){const x=rnd()*420,y=rnd()*420;g.fillStyle=i%2?'#55b6a5':'#8ac7a5';g.beginPath();for(let j=0;j<12;j++){const a=j/12*Math.PI*2,rr=15+rnd()*43;const xx=x+Math.cos(a)*rr,yy=y+Math.sin(a)*rr*.65;if(j===0)g.moveTo(xx,yy);else g.lineTo(xx,yy);}g.closePath();g.fill();}
+      for(let i=0;i<15;i++){g.strokeStyle='rgba(230,255,249,.19)';g.lineWidth=3+rnd()*9;g.beginPath();g.ellipse(rnd()*420,rnd()*420,25+rnd()*45,8,-.2,0,Math.PI);g.stroke();}
+    }else{
+      for(let i=0;i<30;i++){const y=i*16;g.fillStyle=i%3===0?'rgba(255,255,255,.12)':'rgba(20,12,37,.08)';g.beginPath();g.moveTo(0,y);g.bezierCurveTo(100,y+20,280,y-15,420,y+10);g.lineTo(420,y+18);g.bezierCurveTo(280,y+9,100,y+36,0,y+10);g.fill();}
+    }
+    // Subtle speckled surface gives depth without external textures.
+    for(let i=0;i<4500;i++){g.fillStyle=i%2?'rgba(255,255,255,.035)':'rgba(0,0,0,.04)';g.fillRect(rnd()*420,rnd()*420,1+rnd()*2,1+rnd()*2);}
+    const shade=g.createRadialGradient(120,100,35,225,230,245);shade.addColorStop(0,'#ffffff08');shade.addColorStop(.5,'#10102405');shade.addColorStop(.8,'#060b2480');shade.addColorStop(1,'#05091afa');g.fillStyle=shade;g.fillRect(0,0,420,420);g.restore();return c;
+  });
+  function planet(x,y,r,index,alpha=1,ring=false){
+    const p=PLANETS[index];ctx.save();ctx.globalAlpha=alpha;
+    const glow=ctx.createRadialGradient(x,y,r*.8,x,y,r*1.42);glow.addColorStop(0,p.color+'18');glow.addColorStop(1,p.color+'00');ctx.fillStyle=glow;ctx.fillRect(x-r*1.5,y-r*1.5,r*3,r*3);
+    const drawRing=(front)=>{ctx.save();ctx.translate(x,y);ctx.rotate(-.32);ctx.strokeStyle=p.color+'60';ctx.lineWidth=r*.16;ctx.beginPath();ctx.ellipse(0,0,r*1.65,r*.38,0,front?0:Math.PI,front?Math.PI:Math.PI*2);ctx.stroke();ctx.strokeStyle=p.color+'35';ctx.lineWidth=r*.025;ctx.beginPath();ctx.ellipse(0,0,r*1.88,r*.46,0,front?0:Math.PI,front?Math.PI:Math.PI*2);ctx.stroke();ctx.restore();};
+    if(ring)drawRing(false);ctx.drawImage(planetTextures[index],x-r*1.094,y-r*1.094,r*2.188,r*2.188);if(ring)drawRing(true);ctx.restore();
+  }
+  function path(points,fill,stroke){ctx.beginPath();points.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=.7;ctx.stroke();}}
+  function drawShip(x,y,scale,tilt=0,hero=false){
+    ctx.save();ctx.translate(x,y);ctx.rotate(tilt);ctx.scale(scale,scale);
+    const flame=hero?1:1+Math.sin(clock*30)*.13;
+    const thrust=ctx.createLinearGradient(-94,0,-23,0);thrust.addColorStop(0,'#b4a0ff00');thrust.addColorStop(.55,'#988bff66');thrust.addColorStop(1,'#c8c3ffee');
+    path([[-24,-9],[-94*flame,0],[-24,9]],thrust);path([[-25,-4],[-59*flame,0],[-25,4]],'#e9f5ff');
+    path([[-4,-8],[-32,-38],[-10,-38],[29,-7]],'#b9b9e3','#e0dfff');path([[-4,8],[-32,38],[-10,38],[29,7]],'#686b9b','#b2b8dd');
+    path([[-29,-7],[-39,-23],[-29,-23],[-10,-7]],'#d2d7ed');path([[-29,7],[-39,23],[-29,23],[-10,7]],'#838bb8');
+    const body=ctx.createLinearGradient(0,-13,0,16);body.addColorStop(0,'#fffaf0');body.addColorStop(.45,'#dce4f5');body.addColorStop(1,'#8b98be');
+    ctx.beginPath();ctx.moveTo(-32,-8);ctx.bezierCurveTo(-3,-14,35,-12,54,0);ctx.bezierCurveTo(35,12,-3,14,-32,8);ctx.closePath();ctx.fillStyle=body;ctx.fill();ctx.strokeStyle='#e6e6f488';ctx.lineWidth=.6;ctx.stroke();
+    path([[8,-8],[29,-5],[37,0],[9,0]],'#26396b','#789de6');path([[9,0],[37,0],[29,5],[8,8]],'#415785');
+    path([[-19,-33],[-14,-33],[1,-17],[-4,-17]],'#d9ff94');path([[-19,33],[-14,33],[1,17],[-4,17]],'#d9ff94');
+    ctx.fillStyle='#a4a6ca';ctx.fillRect(-23,-3,15,6);ctx.fillStyle='#d6fc8a';ctx.fillRect(-22,-2,5,4);
+    ctx.strokeStyle='#7984aa';ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(-8,-8);ctx.lineTo(3,-5);ctx.moveTo(-8,8);ctx.lineTo(3,5);ctx.stroke();
+    if(!hero&&invincible>0){ctx.strokeStyle='#b0dcfa77';ctx.lineWidth=1.3;ctx.beginPath();ctx.ellipse(6,0,59,46,0,0,7);ctx.stroke();}
+    ctx.restore();
+  }
+  function drawBackground(dt){
+    ctx.fillStyle='#0b1022';ctx.fillRect(0,0,w,h);
+    const nebula=ctx.createRadialGradient(w*.74,h*.36,10,w*.73,h*.42,w*.55);nebula.addColorStop(0,'#35275177');nebula.addColorStop(.5,'#1b254131');nebula.addColorStop(1,'#0b102200');ctx.fillStyle=nebula;ctx.fillRect(0,0,w,h);
+    const velocity=phase==='flying'?1:.09;
+    for(const star of stars){if(!reducedMotion||phase==='flying')star.x=(star.x-dt*.015*star.speed*velocity+1)%1;ctx.globalAlpha=star.a*(.8+.2*Math.sin(clock*.6+star.y*20));ctx.fillStyle='#d3ddff';ctx.beginPath();ctx.arc(star.x*w,star.y*h,star.r,0,7);ctx.fill();}
+    ctx.globalAlpha=1;
+    if(phase==='menu'||(!session&&phase==='info')){
+      const mobile=w<721,px=mobile?w*.92:w*.77,py=mobile?h*.28:h*.36,pr=Math.min(w*(mobile?.4:.145),h*.31);
+      ctx.save();ctx.translate(px,py);ctx.rotate(-.32);ctx.strokeStyle='#b0a0eb1f';ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(0,0,pr*1.95,pr*.75,0,0,7);ctx.stroke();ctx.setLineDash([2,9]);ctx.strokeStyle='#d4dafa24';ctx.beginPath();ctx.ellipse(0,0,pr*2.3,pr*1.05,0,0,7);ctx.stroke();ctx.restore();
+      planet(px,py,pr,0,1,true);planet(w*.57,h*.17,Math.min(w*.025,30),1,.8);planet(w*.96,h*.78,Math.min(w*.055,65),7,.7);
+      const bob=reducedMotion?0:Math.sin(clock*.7)*7;drawShip(w*(mobile?.82:.73),h*.61+bob,Math.min(w*.0026,3.5),-.15,true);
+      ctx.save();ctx.fillStyle='#d6fc8a';ctx.beginPath();ctx.arc(w*.88,h*.18,3,0,7);ctx.fill();ctx.strokeStyle='#d6fc8a44';ctx.beginPath();ctx.arc(w*.88,h*.18,8,0,7);ctx.stroke();ctx.restore();
+    }else if(session){
+      const index=Math.min(session.stage,7),x=w*.77-Math.min(flight/FLIGHT_SECONDS,1)*w*.18;
+      planet(x,h*.29,Math.min(w*.145,h*.24),index,.72,index===5);planet(w*.11,h*.8,Math.min(w*.035,25),(index+1)%8,.45);
+      ctx.strokeStyle='#b8c7e808';ctx.lineWidth=1;for(let yy=0;yy<h;yy+=60){ctx.beginPath();ctx.moveTo(0,yy);ctx.lineTo(w,yy);ctx.stroke();}
+    }
+  }
+  function drawGame(){
+    if(!session||phase==='menu')return;
+    for(const rock of rocks){ctx.save();ctx.translate(rock.x,rock.y);ctx.rotate(rock.rot);const gradient=ctx.createLinearGradient(-rock.r,-rock.r,rock.r,rock.r);gradient.addColorStop(0,'#8b829d');gradient.addColorStop(1,'#303748');path(rock.shape.map((p,i)=>[Math.cos(i/9*Math.PI*2)*rock.r*p,Math.sin(i/9*Math.PI*2)*rock.r*p]),gradient,'#a59db84d');ctx.fillStyle='#0c132655';ctx.beginPath();ctx.arc(-rock.r*.23,-rock.r*.15,rock.r*.28,0,7);ctx.fill();ctx.beginPath();ctx.arc(rock.r*.35,rock.r*.3,rock.r*.17,0,7);ctx.fill();ctx.restore();}
+    for(const c of capsules){ctx.save();ctx.translate(c.x,c.y);ctx.rotate(Math.sin(clock*2+c.phase)*.12);ctx.shadowColor='#d6fc8a';ctx.shadowBlur=15;ctx.fillStyle='#c7f3ab';ctx.fillRect(-9,-11,18,22);ctx.shadowBlur=0;ctx.fillStyle='#354e3b';ctx.fillRect(-5,-5,10,2);ctx.fillRect(-5,0,7,2);ctx.strokeStyle='#e9ffdc';ctx.strokeRect(-9,-11,18,22);ctx.restore();}
+    if(portal){
+      ctx.save();ctx.translate(portal.x,portal.y);const r=portal.r,glow=ctx.createRadialGradient(0,0,3,0,0,r*1.7);glow.addColorStop(0,'#d6fc8a12');glow.addColorStop(.65,'#b0f09718');glow.addColorStop(1,'#a2fc9700');ctx.fillStyle=glow;ctx.fillRect(-r*2,-r*2,r*4,r*4);
+      ctx.shadowColor='#d6fc8a';ctx.shadowBlur=18;ctx.strokeStyle='#d6fc8a';ctx.lineWidth=3;ctx.beginPath();ctx.ellipse(0,0,r*.7,r,0,0,7);ctx.stroke();ctx.shadowBlur=0;
+      ctx.setLineDash([5,10]);ctx.lineDashOffset=-clock*12;ctx.strokeStyle='#d6fc8a66';ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(0,0,r*.86,r*1.15,0,0,7);ctx.stroke();ctx.setLineDash([]);
+      ctx.fillStyle='#d6fc8a';ctx.textAlign='center';ctx.font='600 9px "Segoe UI", sans-serif';ctx.fillText('CHECKPOINT '+pad(Math.min(session.stage+1,8)),0,-r-23);ctx.font='11px "Segoe UI", sans-serif';ctx.fillStyle='#e2f2cd';ctx.fillText('2 soal · 1 gerbang',0,r+30);ctx.restore();
+    }
+    for(const p of particles){ctx.globalAlpha=Math.min(1,p.life*2);ctx.fillStyle=p.color;ctx.fillRect(p.x,p.y,3,3);}ctx.globalAlpha=1;
+    if(invincible<=0||Math.floor(clock*7)%2||phase!=='flying')drawShip(ship.x,ship.y,w<721?.65:.8,ship.tilt);
+  }
+  function frame(now){
+    const dt=Math.min((now-last)/1000||0,.5);last=now;
+    if(!document.hidden){clock+=dt;let remaining=dt;while(remaining>0){const step=Math.min(remaining,1/60);update(step);remaining-=step;}drawBackground(dt);drawGame();}
+    animFrame=requestAnimationFrame(frame);
+  }
+  if(!ctx){$('intro').innerHTML='<h1>Canvas belum tersedia.</h1><p>Gunakan browser modern yang mendukung HTML Canvas.</p>';return;}
+  resize();menu();last=performance.now();animFrame=requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
